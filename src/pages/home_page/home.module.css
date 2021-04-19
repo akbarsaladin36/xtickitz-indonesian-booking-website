@@ -1,0 +1,25 @@
+.header_big_text_1 {
+  color: purple;
+}
+
+.now_showing_text_1 {
+  color: purple;
+}
+
+.now_showing_text_2 {
+  text-align: right;
+  color: purple !important;
+  margin-right: 10%;
+  text-decoration: none;
+}
+
+.upcoming_movie_text_1 {
+  color: purple;
+}
+
+.button_month_1 {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+  margin-left: 2%;
+}

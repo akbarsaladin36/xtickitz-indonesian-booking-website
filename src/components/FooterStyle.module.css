@@ -1,0 +1,11 @@
+.footer_list {
+  list-style-type: none;
+  text-decoration: none;
+  margin-top: 10%;
+}
+
+.footer_list_words {
+  color: black;
+  opacity: 50%;
+  margin-top: 100%;
+}
