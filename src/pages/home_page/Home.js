@@ -77,7 +77,7 @@ class Home extends Component {
             </Col>
           </Row>
           <Row>
-            <Col>
+            <Col className="ml-3">
               <Button
                 variant="Primary"
                 className={TickitzHomeStyle.button_month_1}
