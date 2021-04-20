@@ -1,3 +1,16 @@
 .now_showing_cards_image {
   width: 129%;
 }
+
+.image_detail_button {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+  width: 140px;
+}
+
+.image_detail_button:hover {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+}

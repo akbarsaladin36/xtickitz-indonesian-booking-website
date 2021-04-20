@@ -7,10 +7,16 @@ class TickitzImageCard1 extends Component {
     return (
       <div>
         <Card className={TickitzCardStyle.now_showing_cards_image}>
-          <Card.Body>
-            <img src="/img/upcoming-movies-image-1" alt="now showing" />
-            <p>Action</p>
-            <Button variant="primary">Detail</Button>
+          <Card.Body className="text-center">
+            <img src="/img/upcoming-movies-image-1.jpg" alt="now showing" />
+            <p class="mt-3">Movie Name</p>
+            <p>Genre</p>
+            <Button
+              variant="primary"
+              className={TickitzCardStyle.image_detail_button}
+            >
+              Detail
+            </Button>
           </Card.Body>
         </Card>
       </div>

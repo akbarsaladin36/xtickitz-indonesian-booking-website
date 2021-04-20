@@ -19,7 +19,23 @@
 
 .button_month_1 {
   border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+  width: 110px;
+}
+
+.button_month_1:hover {
+  border-color: purple !important;
   color: white !important;
   background-color: purple !important;
-  margin-left: 2%;
+}
+
+.jumbotron_big_text_1 {
+  color: purple;
+}
+
+.join_button_1 {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
 }

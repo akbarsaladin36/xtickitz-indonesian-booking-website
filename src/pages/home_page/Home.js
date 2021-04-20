@@ -2,9 +2,10 @@ import React, { Component } from "react";
 import TickitzNavbar from "../../components/TickitzNavbar";
 import TickitzFooter from "../../components/TickitzFooter";
 import TickitzHomeStyle from "./home.module.css";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TickitzImage from "../../components/TickitzImageCard";
+import TickitzImageCard1 from "../../components/TickitzImageCard1";
 
 class Home extends Component {
   render() {
@@ -76,37 +77,121 @@ class Home extends Component {
               </Link>
             </Col>
           </Row>
-          <Row>
-            <Col className="ml-3">
+          <Row className="mt-3">
+            <Col xs={1} className="ml-4">
               <Button
                 variant="Primary"
-                className={TickitzHomeStyle.button_month_1}
+                className={`${TickitzHomeStyle.button_month_1}`}
               >
                 September
               </Button>
             </Col>
-            <Col>
+            <Col xs={1} className="ml-2">
               <Button
                 variant="Primary"
-                className={TickitzHomeStyle.button_month_1}
+                className={`${TickitzHomeStyle.button_month_1} ml-3`}
               >
-                September
+                October
               </Button>
             </Col>
-            <Col>
+            <Col xs={1} className="ml-3">
               <Button
                 variant="Primary"
-                className={TickitzHomeStyle.button_month_1}
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
               >
-                September
+                November
+              </Button>
+            </Col>
+            <Col xs={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+              >
+                December
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+              >
+                January
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+              >
+                February
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+              >
+                March
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+              >
+                April
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+              >
+                May
               </Button>
             </Col>
           </Row>
-          <Row>
-            <Col>Ini untuk gambar detailnya</Col>
+          <Row className="mt-5 ml-2">
+            <Col md={2} className="mr-4">
+              <TickitzImageCard1 />
+            </Col>
+            <Col md={2} className="mr-4">
+              <TickitzImageCard1 />
+            </Col>
+            <Col md={2} className="mr-4">
+              <TickitzImageCard1 />
+            </Col>
+            <Col md={2} className="mr-4">
+              <TickitzImageCard1 />
+            </Col>
+            <Col md={2} className="mr-4">
+              <TickitzImageCard1 />
+            </Col>
           </Row>
-          <Row className="text-center">
-            <Col>Untuk jumbotron</Col>
+          <Row className="text-center mt-5 mb-5">
+            <Col>
+              <h5>Be the vanguard of the</h5>
+              <h1 className={TickitzHomeStyle.jumbotron_big_text_1}>
+                Moviegoers
+              </h1>
+              <Form inline className="justify-content-center mt-5">
+                <Form.Label htmlFor="inlineFormInputName2" srOnly>
+                  Name
+                </Form.Label>
+                <Form.Control
+                  type="email"
+                  className="mb-2 mr-sm-2"
+                  id="inlineFormInputName2"
+                  placeholder="Write your email"
+                />
+                <Button
+                  variant="Primary"
+                  className={`${TickitzHomeStyle.join_button_1} mb-sm-2`}
+                >
+                  Join Now
+                </Button>
+              </Form>
+            </Col>
           </Row>
           <TickitzFooter />
         </Container>
