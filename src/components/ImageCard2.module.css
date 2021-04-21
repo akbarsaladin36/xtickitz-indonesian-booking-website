@@ -1,0 +1,12 @@
+.book_now_button {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+  width: 100%;
+}
+
+.book_now_button:hover {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+}
