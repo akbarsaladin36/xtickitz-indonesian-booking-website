@@ -1,0 +1,25 @@
+.reset_form_button {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+  width: 20%;
+}
+
+.reset_form_button:hover {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+}
+
+.submit_form_button {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+  width: 20%;
+}
+
+.submit_form_button:hover {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+}

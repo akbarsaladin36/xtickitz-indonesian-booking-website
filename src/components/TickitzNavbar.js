@@ -23,13 +23,13 @@ class TickitzNavbar extends Component {
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
                 <Nav.Link href="#home" className="mx-3">
-                  Movies
+                  Home
                 </Nav.Link>
                 <Nav.Link href="#link" className="mx-3">
-                  Cinema
+                  Payment
                 </Nav.Link>
                 <Nav.Link href="#link" className="mx-3">
-                  Buy Ticket
+                  Profile
                 </Nav.Link>
               </Nav>
               <Nav className="ml-auto">

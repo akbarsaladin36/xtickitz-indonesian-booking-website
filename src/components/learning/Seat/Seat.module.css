@@ -1,0 +1,25 @@
+.seat {
+  width: 20px;
+  height: 20px;
+  border-radius: 25%;
+}
+
+.rowSeat {
+  flex-wrap: nowrap !important;
+}
+
+.colSeat {
+  padding: 0px 5px !important;
+}
+
+.seatAvailable {
+  background-color: gray;
+}
+
+.seatSelected {
+  background-color: blueviolet;
+}
+
+.seatSold {
+  background-color: gainsboro;
+}

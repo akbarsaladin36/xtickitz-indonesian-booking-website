@@ -1,0 +1,25 @@
+.change_movie_button {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+  width: 50%;
+}
+
+.change_movie_button:hover {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+}
+
+.checkout_button {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+  width: 40%;
+}
+
+.checkout_button:hover {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+}
