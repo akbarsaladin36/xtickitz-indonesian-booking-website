@@ -6,9 +6,35 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TickitzImage from "../../components/TickitzImageCard";
 import TickitzImageCard1 from "../../components/TickitzImageCard1";
+import axiosApiIntances from "../../utils/axios";
 
 class Home extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+
+  componentDidMount() {
+    this.getDataMovieAll();
+  }
+
+  getDataMovieAll = () => {
+    console.log("Get Movie All!");
+    axiosApiIntances
+      .get("home")
+      .then((res) => {
+        console.log(res);
+        this.setState({ data: res.data.data });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
   render() {
+    console.log(this.state);
     return (
       <div>
         <Container>
@@ -49,21 +75,13 @@ class Home extends Component {
             </Col>
           </Row>
           <Row className="mt-4 ml-5 overflow-hidden">
-            <Col md={2} className="mr-4">
-              <TickitzImage />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImage />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImage />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImage />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImage />
-            </Col>
+            {this.state.data.map((item, index) => {
+              return (
+                <Col md={2} className="mr-4" key={index}>
+                  <TickitzImage />
+                </Col>
+              );
+            })}
           </Row>
           <Row className="mt-5 ml-2 overflow-hidden">
             <Col>
@@ -152,21 +170,13 @@ class Home extends Component {
             </Col>
           </Row>
           <Row className="mt-5 ml-2">
-            <Col md={2} className="mr-4">
-              <TickitzImageCard1 />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImageCard1 />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImageCard1 />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImageCard1 />
-            </Col>
-            <Col md={2} className="mr-4">
-              <TickitzImageCard1 />
-            </Col>
+            {this.state.data.map((item, index) => {
+              return (
+                <Col md={2} key={index} className="mr-4">
+                  <TickitzImageCard1 data={item} />
+                </Col>
+              );
+            })}
           </Row>
           <Row className="text-center mt-5 mb-5">
             <Col>

@@ -4,6 +4,7 @@ import TickitzCardStyle from "../components/ImageCard.module.css";
 
 class TickitzImage extends Component {
   render() {
+    console.log(this.props);
     return (
       <div>
         <Card className={TickitzCardStyle.now_showing_cards_image}>

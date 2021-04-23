@@ -6,6 +6,51 @@ import TickitzImageCard from "../../components/TickitzImageCard";
 import TickitzForm from "../../components/TickitzForm";
 
 class AdminPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        movieName: "",
+        movieGenre: "",
+        movieReleasedDate: "",
+        movieDirectedBy: "",
+        movieDuration: "",
+        movieCasts: "",
+        movieSynopsis: "",
+      },
+      data: [],
+    };
+  }
+
+  changeText = (event) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  resetData = (event) => {
+    event.preventDefault();
+    this.setState({
+      form: {
+        movieName: "",
+        movieGenre: "",
+        movieReleasedDate: "",
+        movieDirectedBy: "",
+        movieDuration: "",
+        movieCasts: "",
+        movieSynopsis: "",
+      },
+    });
+  };
+
+  submitData = (event) => {
+    event.preventDefault();
+    console.log("Save Data!");
+    console.log(this.state.form);
+  };
   render() {
     return (
       <div>
@@ -28,14 +73,21 @@ class AdminPage extends Component {
             <Col className="mt-5 ml-5">
               <h3>Data Movie</h3>
             </Col>
-            <Col>
+            <Col className="mt-5">
               <Form>
-                <Form.Row>
-                  <Form.Group>
+                <Form.Row className="justify-content-end">
+                  <Form.Group className="mr-3">
                     <Form.Control as="select" placeholder="sort">
                       <option>Release Date</option>
                       <option>Movie Name</option>
                     </Form.Control>
+                  </Form.Group>
+                  <Form.Group>
+                    <Form.Control
+                      name="search"
+                      type="text"
+                      placeholder="Search movie name..."
+                    />
                   </Form.Group>
                 </Form.Row>
               </Form>

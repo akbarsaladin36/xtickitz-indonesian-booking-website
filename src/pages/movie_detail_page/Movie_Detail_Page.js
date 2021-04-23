@@ -4,9 +4,45 @@ import TickitzFooter from "../../components/TickitzFooter";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import TickitzBigImage from "../../components/TickitzBigImageCard";
 import TickitzImage2 from "../../components/TickitzImageCard2";
+import axiosApiIntances from "../../utils/axios";
 
 class MovieDetailPage extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      data: [],
+    };
+  }
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    // console.log(id);
+    this.getMovieDataById(id);
+  }
+
+  getMovieDataById = (id) => {
+    // console.log(`Get data by id${id}`);
+    axiosApiIntances
+      .get(`http://localhost:5000/api/v1/tickitz/movie-detail/${id}`)
+      .then((res) => {
+        console.log(res.data.data[0]);
+        this.setState({ data: res.data.data[0] });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
   render() {
+    console.log(this.state.data);
+    const {
+      movie_name,
+      movie_genre,
+      movie_release_date,
+      movie_directed_by,
+      movie_duration,
+      movie_casts,
+      movie_synopsis,
+    } = this.state.data;
     return (
       <div>
         <Container>
@@ -16,35 +52,30 @@ class MovieDetailPage extends Component {
               <TickitzBigImage />
             </Col>
             <Col className="ml-4">
-              <h4>Movie Name</h4>
-              <p className="text-muted">Movie Genre</p>
+              <h4>{movie_name}</h4>
+              <p className="text-muted">{movie_genre}</p>
               <Row>
                 <Col>
                   <p className="text-muted">Release Date</p>
-                  <p>1</p>
+                  <p>{movie_release_date}</p>
                 </Col>
                 <Col>
                   <p className="text-muted">Directed By</p>
-                  <p>1</p>
+                  <p>{movie_directed_by}</p>
                 </Col>
               </Row>
               <Row>
                 <Col>
                   <p className="text-muted">Duration</p>
-                  <p>1</p>
+                  <p>{movie_duration}</p>
                 </Col>
                 <Col>
                   <p className="text-muted">Casts</p>
-                  <p>1</p>
+                  <p>{movie_casts}</p>
                 </Col>
               </Row>
               <h4>Synopsis</h4>
-              <p className="text-justify">
-                lorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem ipsumlorem
-                ipsumlorem ipsumlorem ipsumlorem ipsum lorem ipsum lorem ipsum
-                lorem ipsum lorem ipsum lorem ipsum lorem ipsumlorem ipsumlorem
-                ipsumlorem ipsumlorem ipsum lorem ipsum
-              </p>
+              <p className="text-justify">{movie_synopsis}</p>
             </Col>
           </Row>
           <Row>
