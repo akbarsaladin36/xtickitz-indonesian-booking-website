@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import TickitzNavbar from "../../components/TickitzNavbar";
-import TickitzFooter from "../../components/TickitzFooter";
+import TickitzNavbar from "../../../components/TickitzNavbar";
+import TickitzFooter from "../../../components/TickitzFooter";
 import { Container, Row, Col, Form, Button } from "react-bootstrap";
-import TickitzImageCard from "../../components/TickitzImageCard";
+import TickitzImageCard from "../../../components/TickitzImageCard";
 import AdminPageStyle from "./AdminPageStyle.module.css";
-import TickitzImageCard3 from "../../components/TickitzImageCard3";
-import axiosApiIntances from "../../utils/axios";
+import TickitzImageCard3 from "../../../components/TickitzImageCard3";
+import axiosApiIntances from "../../../utils/axios";
 
 class AdminPage extends Component {
   constructor(props) {

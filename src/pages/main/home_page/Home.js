@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import TickitzNavbar from "../../components/TickitzNavbar";
-import TickitzFooter from "../../components/TickitzFooter";
+import TickitzNavbar from "../../../components/TickitzNavbar";
+import TickitzFooter from "../../../components/TickitzFooter";
 import TickitzHomeStyle from "./home.module.css";
 import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
-import TickitzImage from "../../components/TickitzImageCard";
-import TickitzImageCard1 from "../../components/TickitzImageCard1";
-import axiosApiIntances from "../../utils/axios";
+import TickitzImage from "../../../components/TickitzImageCard";
+import TickitzImageCard1 from "../../../components/TickitzImageCard1";
+import axiosApiIntances from "../../../utils/axios";
 
 class Home extends Component {
   constructor(props) {

@@ -1,7 +1,7 @@
 import React, { Component } from "react";
-import TickitzNavbar from "../../components/TickitzNavbar";
-import TickitzFooter from "../../components/TickitzFooter";
-import TickitzPaymentButton from "../../components/TickitzPaymentButton";
+import TickitzNavbar from "../../../components/TickitzNavbar";
+import TickitzFooter from "../../../components/TickitzFooter";
+import TickitzPaymentButton from "../../../components/TickitzPaymentButton";
 import { Container, Row, Col, Form } from "react-bootstrap";
 
 class PaymentPage extends Component {

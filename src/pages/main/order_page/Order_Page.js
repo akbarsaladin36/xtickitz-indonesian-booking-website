@@ -1,9 +1,9 @@
 import React, { Component } from "react";
-import TickitzNavbar from "../../components/TickitzNavbar";
-import TickitzFooter from "../../components/TickitzFooter";
+import TickitzNavbar from "../../../components/TickitzNavbar";
+import TickitzFooter from "../../../components/TickitzFooter";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import OrderPageStyle from "../order_page/OrderPageStyle.module.css";
-import TickitzSeat1 from "../../components/TickitzSeat/TickitzSeat";
+import TickitzSeat1 from "../../../components/TickitzSeat/TickitzSeat";
 
 class OrderPage extends Component {
   constructor() {

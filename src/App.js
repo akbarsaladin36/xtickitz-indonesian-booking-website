@@ -1,10 +1,10 @@
 import React, { Component } from "react";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Home from "./pages/home_page/Home";
-import MovieDetailPage from "../src/pages/movie_detail_page/Movie_Detail_Page";
-import OrderPage from "../src/pages/order_page/Order_Page";
-import PaymentPage from "../src/pages/payment_page/Payment_Page";
-import AdminPage from "../src/pages/admin_page/Admin_Page";
+import Home from "./pages/main/home_page/Home";
+import MovieDetailPage from "../src/pages/main/movie_detail_page/Movie_Detail_Page";
+import OrderPage from "../src/pages/main/order_page/Order_Page";
+import PaymentPage from "../src/pages/main/payment_page/Payment_Page";
+import AdminPage from "../src/pages/main/admin_page/Admin_Page";
 
 class App extends Component {
   render() {

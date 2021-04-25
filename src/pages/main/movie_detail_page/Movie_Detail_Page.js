@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import TickitzNavbar from "../../components/TickitzNavbar";
-import TickitzFooter from "../../components/TickitzFooter";
+import TickitzNavbar from "../../../components/TickitzNavbar";
+import TickitzFooter from "../../../components/TickitzFooter";
 import { Container, Row, Col, Form } from "react-bootstrap";
-import TickitzBigImage from "../../components/TickitzBigImageCard";
-import TickitzImage2 from "../../components/TickitzImageCard2";
-import axiosApiIntances from "../../utils/axios";
+import TickitzBigImage from "../../../components/TickitzBigImageCard";
+import TickitzImage2 from "../../../components/TickitzImageCard2";
+import axiosApiIntances from "../../../utils/axios";
 
 class MovieDetailPage extends Component {
   constructor(props) {
