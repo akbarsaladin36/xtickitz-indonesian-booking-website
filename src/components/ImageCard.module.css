@@ -14,3 +14,7 @@
   color: white !important;
   background-color: purple !important;
 }
+
+.image_delete_button {
+  width: 140px;
+}

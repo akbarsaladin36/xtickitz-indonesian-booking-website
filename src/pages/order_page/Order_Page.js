@@ -6,6 +6,27 @@ import OrderPageStyle from "../order_page/OrderPageStyle.module.css";
 import TickitzSeat1 from "../../components/TickitzSeat/TickitzSeat";
 
 class OrderPage extends Component {
+  constructor() {
+    super();
+    this.state = {
+      selectedSeat: [],
+      reservedSeat: [],
+    };
+  }
+
+  bookingSeat = (seat) => {
+    this.setState({
+      selectedSeat: [...this.state.selectedSeat, seat],
+    });
+    console.log(seat);
+  };
+
+  booking = () => {
+    console.log("booking");
+    const booking = JSON.stringify(this.state.selectedSeat);
+    localStorage.setItem("bookingSeat", booking);
+  };
+
   render() {
     return (
       <div>
