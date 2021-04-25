@@ -40,340 +40,42 @@ class TickitzSeat1 extends Component {
     return (
       <div>
         <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>A</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
-        </Row>
-        <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>B</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
-        </Row>
-        <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>C</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
-        </Row>
-        <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>D</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
-        </Row>
-        <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>E</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
-        </Row>
-        <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>F</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
-        </Row>
-        <Row className={TickitzSeatStyle.rowSeat}>
-          <Row>
-            <Col className={TickitzSeatStyle.colSeat}>G</Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col></Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-            <Col className={TickitzSeatStyle.colSeat}>
-              <div className={TickitzSeatStyle.seat}></div>
-            </Col>
-          </Row>
+          <Col className={TickitzSeatStyle.colSeat}>{seatAlphabet}</Col>
+          {this.state.seatLeft.map((item, index) => {
+            return (
+              <Col className={TickitzSeatStyle.colSeat} key={index}>
+                <div
+                  onClick={() => bookingSeat(item)}
+                  className={`${TickitzSeatStyle.seat} ${
+                    reservedSeat.indexOf(item) > -1
+                      ? TickitzSeatStyle.seatSold
+                      : selectedSeat.indexOf(item) > -1
+                      ? TickitzSeatStyle.seatSelected
+                      : TickitzSeatStyle.seatAvailable
+                  }`}
+                ></div>
+              </Col>
+            );
+          })}
+          {/* PEMBATAS */}
+          <Col className={TickitzSeatStyle.colSeat}></Col>
+          {/* PEMBATAS */}
+          {this.state.seatRight.map((item, index) => {
+            return (
+              <Col className={TickitzSeatStyle.colSeat} key={index}>
+                <div
+                  onClick={() => bookingSeat(item)}
+                  className={`${TickitzSeatStyle.seat} ${
+                    reservedSeat.indexOf(item) > -1
+                      ? TickitzSeatStyle.seatSold
+                      : selectedSeat.indexOf(item) > -1
+                      ? TickitzSeatStyle.seatSelected
+                      : TickitzSeatStyle.seatAvailable
+                  }`}
+                ></div>
+              </Col>
+            );
+          })}
         </Row>
       </div>
     );

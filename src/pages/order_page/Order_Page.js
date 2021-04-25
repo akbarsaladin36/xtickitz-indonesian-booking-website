@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import TickitzNavbar from "../../components/TickitzNavbar";
 import TickitzFooter from "../../components/TickitzFooter";
-import { Container, Row, Col, Button } from "react-bootstrap";
+import { Container, Row, Col, Button, Card } from "react-bootstrap";
 import OrderPageStyle from "../order_page/OrderPageStyle.module.css";
 import TickitzSeat1 from "../../components/TickitzSeat/TickitzSeat";
 
@@ -28,6 +28,7 @@ class OrderPage extends Component {
   };
 
   render() {
+    const { selectedSeat, reservedSeat } = this.state;
     return (
       <div>
         <Container>
@@ -81,8 +82,53 @@ class OrderPage extends Component {
             </Col>
           </Row>
           <Row className="mb-3">
-            <Col lg={5} className="mt-2 ml-5 bg-light">
-              <TickitzSeat1 />
+            <Col md={5} className="ml-5 bg-light">
+              <Card>
+                <Card.Body>
+                  <TickitzSeat1
+                    seatAlphabet="A"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                  <TickitzSeat1
+                    seatAlphabet="B"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                  <TickitzSeat1
+                    seatAlphabet="C"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                  <TickitzSeat1
+                    seatAlphabet="D"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                  <TickitzSeat1
+                    seatAlphabet="E"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                  <TickitzSeat1
+                    seatAlphabet="F"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                  <TickitzSeat1
+                    seatAlphabet="G"
+                    reservedSeat={reservedSeat}
+                    selectedSeat={selectedSeat}
+                    bookingSeat={this.bookingSeat.bind(this)}
+                  />
+                </Card.Body>
+              </Card>
             </Col>
           </Row>
           <Row>
@@ -98,6 +144,7 @@ class OrderPage extends Component {
               <Button
                 variant="primary"
                 className={`${OrderPageStyle.checkout_button} mr-5`}
+                onClick={this.booking}
               >
                 Checkout Now
               </Button>

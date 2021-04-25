@@ -23,10 +23,6 @@ class AdminPage extends Component {
         movieSynopsis: "",
       },
       data: [],
-      pagination: {},
-      sort: "",
-      searchQuery: "",
-
       isUpdate: false,
       movieId: "",
     };

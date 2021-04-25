@@ -22,10 +22,10 @@ class TickitzNavbar extends Component {
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
               <Nav className="mr-auto">
-                <Nav.Link href="#home" className="mx-3">
+                <Nav.Link href="/home" className="mx-3">
                   Home
                 </Nav.Link>
-                <Nav.Link href="#link" className="mx-3">
+                <Nav.Link href="/payment-page" className="mx-3">
                   Payment
                 </Nav.Link>
                 <Nav.Link href="#link" className="mx-3">

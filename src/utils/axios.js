@@ -1,7 +1,8 @@
 import axios from "axios";
+require("dotenv").config();
 
 const axiosApiIntances = axios.create({
-  baseURL: "http://localhost:5000/api/v1/tickitz/",
+  baseURL: `${process.env.REACT_APP_BACKEND_BASEURL}`,
 });
 
 export default axiosApiIntances;
