@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import TickitzNavbar from "../../../components/TickitzNavbar";
 import TickitzFooter from "../../../components/TickitzFooter";
 import TickitzPaymentButton from "../../../components/TickitzPaymentButton";
-import { Container, Row, Col, Form } from "react-bootstrap";
+import { Container, Row, Col, Form, Button } from "react-bootstrap";
 
 class PaymentPage extends Component {
   render() {
@@ -95,6 +95,14 @@ class PaymentPage extends Component {
                   <TickitzPaymentButton />
                 </Col>
               </Row>
+            </Col>
+          </Row>
+          <Row className="justify-content-start">
+            <Col md={4}>
+              <Button className="ml-4">Previous step</Button>
+            </Col>
+            <Col md={5} className="mr-5">
+              <Button>Pay your order</Button>
             </Col>
           </Row>
           <TickitzFooter />

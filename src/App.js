@@ -5,6 +5,8 @@ import MovieDetailPage from "../src/pages/main/movie_detail_page/Movie_Detail_Pa
 import OrderPage from "../src/pages/main/order_page/Order_Page";
 import PaymentPage from "../src/pages/main/payment_page/Payment_Page";
 import AdminPage from "../src/pages/main/admin_page/Admin_Page";
+import SignUp from "./pages/main/sign_up/Sign_Up";
+import SignIn from "./pages/main/sign_in/Sign_In";
 
 class App extends Component {
   render() {
@@ -12,15 +14,17 @@ class App extends Component {
       <div>
         <Router>
           <Switch>
-            <Route path="/home" exact component={Home} />
+            <Route path="/main/home" exact component={Home} />
             <Route
-              path="/movie-detail-page/:id"
+              path="/main/movie-detail-page/:id"
               exact
               component={MovieDetailPage}
             />
-            <Route path="/order-page" exact component={OrderPage} />
-            <Route path="/payment-page" exact component={PaymentPage} />
-            <Route path="/admin-page" exact component={AdminPage} />
+            <Route path="/main/order-page" exact component={OrderPage} />
+            <Route path="/main/payment-page" exact component={PaymentPage} />
+            <Route path="/main/admin-page" exact component={AdminPage} />
+            <Route path="/main/sign-in" exact component={SignIn} />
+            <Route path="/main/sign-up" exact component={SignUp} />
           </Switch>
         </Router>
       </div>

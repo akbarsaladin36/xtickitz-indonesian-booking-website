@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import TickitzNavbar from "../../../components/TickitzNavbar";
 import TickitzFooter from "../../../components/TickitzFooter";
 import { Container, Row, Col, Button, Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
 import OrderPageStyle from "../order_page/OrderPageStyle.module.css";
 import TickitzSeat1 from "../../../components/TickitzSeat/TickitzSeat";
 
@@ -41,7 +42,7 @@ class OrderPage extends Component {
                   <p>Spiderman: Homecoming</p>
                 </Col>
                 <Col className="text-right">
-                  <p>ini buttonnya</p>
+                  <Link to="#">Change movie</Link>
                 </Col>
               </Row>
             </Col>
