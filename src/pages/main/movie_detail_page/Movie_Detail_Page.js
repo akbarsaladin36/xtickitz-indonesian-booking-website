@@ -22,7 +22,7 @@ class MovieDetailPage extends Component {
   getMovieDataById = (id) => {
     // console.log(`Get data by id${id}`);
     axiosApiIntances
-      .get(`http://localhost:5000/api/v1/tickitz/movie-detail/${id}`)
+      .get(`tickitz/movie-detail/${id}`)
       .then((res) => {
         console.log(res.data.data[0]);
         this.setState({ data: res.data.data[0] });

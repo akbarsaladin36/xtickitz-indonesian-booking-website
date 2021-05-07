@@ -5,7 +5,7 @@ import { withRouter } from "react-router-dom";
 
 class TickitzImageCard1 extends Component {
   handleMovieDetail = (id) => {
-    this.props.history.push(`/movie-detail-page/${id}`);
+    this.props.history.push(`/main/movie-detail-page/${id}`);
   };
 
   render() {

@@ -6,14 +6,16 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TickitzImage from "../../../components/TickitzImageCard";
 import TickitzImageCard1 from "../../../components/TickitzImageCard1";
-import axiosApiIntances from "../../../utils/axios";
+// import axiosApiIntances from "../../../utils/axios";
+import { connect } from "react-redux";
+import { getAllMovie } from "../../../redux/actions/movie";
 
 class Home extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      data: [],
-    };
+    // this.state = {
+    //   data: [],
+    // };
   }
 
   componentDidMount() {
@@ -22,19 +24,20 @@ class Home extends Component {
 
   getDataMovieAll = () => {
     console.log("Get Movie All!");
-    axiosApiIntances
-      .get("home")
-      .then((res) => {
-        console.log(res);
-        this.setState({ data: res.data.data });
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+    this.props.getAllMovie();
+    // axiosApiIntances
+    //   .get("tickitz/home")
+    //   .then((res) => {
+    //     console.log(res);
+    //     this.setState({ data: res.data.data });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //   });
   };
 
   render() {
-    console.log(this.state);
+    // console.log(this.state);
     return (
       <div>
         <Container>
@@ -74,10 +77,14 @@ class Home extends Component {
               </Link>
             </Col>
           </Row>
-          <Row className="mt-4 ml-5 overflow-hidden">
-            {this.state.data.map((item, index) => {
+          <Row className="mt-4 ml-5">
+            {this.props.movie.dataMovie.map((item, index) => {
               return (
-                <Col md={2} className="mr-4" key={index}>
+                <Col
+                  md={2}
+                  className="mr-4 d-flex flex-column overflow-auto"
+                  key={index}
+                >
                   <TickitzImage />
                 </Col>
               );
@@ -170,7 +177,7 @@ class Home extends Component {
             </Col>
           </Row>
           <Row className="mt-5 ml-2">
-            {this.state.data.map((item, index) => {
+            {this.props.movie.dataMovie.map((item, index) => {
               return (
                 <Col md={2} key={index} className="mr-4">
                   <TickitzImageCard1 data={item} />
@@ -210,4 +217,10 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => ({
+  movie: state.movie,
+});
+
+const mapDispatchToProps = { getAllMovie };
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home);

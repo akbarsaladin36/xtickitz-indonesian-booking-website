@@ -2,9 +2,40 @@ import React, { Component } from "react";
 import { Button, Col, Row, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import SignInStyle from "./SignInStyle.module.css";
+import { connect } from "react-redux";
+import { login } from "../../../redux/actions/auth";
 
 class SignIn extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      form: {
+        userEmail: "",
+        userPassword: "",
+      },
+    };
+  }
+
+  changeText = (event) => {
+    this.setState({
+      form: {
+        ...this.state.form,
+        [event.target.name]: event.target.value,
+      },
+    });
+  };
+
+  handleLogin = (event) => {
+    event.preventDefault();
+    // console.log(this.state.form);
+    this.props.login(this.state.form).then((result) => {
+      // console.log(this.props.auth.data.token);
+      localStorage.setItem("token", this.props.auth.data.token);
+      this.props.history.push("/main/home");
+    });
+  };
   render() {
+    const { userEmail, userPassword } = this.state;
     return (
       <div>
         <Row>
@@ -26,19 +57,31 @@ class SignIn extends Component {
             <p className="text-muted">
               Sign in with your data that you entered during your registration
             </p>
-            <Form className="mt-3">
+            <Form onSubmit={this.handleLogin} className="mt-3">
               <Form.Group>
                 <Form.Label>Email</Form.Label>
-                <Form.Control type="email" placeholder="Write your email" />
+                <Form.Control
+                  type="email"
+                  placeholder="Write your email"
+                  name="userEmail"
+                  value={userEmail}
+                  onChange={(event) => this.changeText(event)}
+                />
               </Form.Group>
               <Form.Group>
                 <Form.Label>Password</Form.Label>
                 <Form.Control
                   type="password"
                   placeholder="Write your password"
+                  name="userPassword"
+                  value={userPassword}
+                  onChange={(event) => this.changeText(event)}
                 />
               </Form.Group>
-              <Button className={`${SignInStyle.sign_in_button} mt-3`}>
+              <Button
+                type="submit"
+                className={`${SignInStyle.sign_in_button} mt-3`}
+              >
                 Sign In
               </Button>
             </Form>
@@ -72,4 +115,10 @@ class SignIn extends Component {
   }
 }
 
-export default SignIn;
+const mapStateToProps = (state) => ({
+  auth: state.auth,
+});
+
+const mapDispatchToProps = { login };
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

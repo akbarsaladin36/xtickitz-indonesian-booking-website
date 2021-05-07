@@ -19,7 +19,22 @@ class SignUp extends Component {
               className={SignUpStyle.tickitz_white_big_brand}
               alt="tickitz big brand"
             />
-            <h1 className={SignUpStyle.image_logo_text}>Wait, Watch, Wow!</h1>
+            <h1 className={SignUpStyle.image_logo_text}>
+              Lets Build Your Account
+            </h1>
+            <h5 className={`${SignUpStyle.image_logo_text_1} text-muted`}>
+              To be a loyal moviegoer and access all of features, your details
+              are required.
+            </h5>
+            <h5 className={`${SignUpStyle.image_logo_text_2} text-light`}>
+              Fill Your Additional Details
+            </h5>
+            <h5 className={`${SignUpStyle.image_logo_text_3} text-muted`}>
+              Activate Your Account
+            </h5>
+            <h5 className={`${SignUpStyle.image_logo_text_4} text-muted`}>
+              Done
+            </h5>
           </Col>
           <Col md={4} className="mt-5 ml-5 pt-5">
             <h2 className={`${SignUpStyle.signup_text} mt-5`}>
