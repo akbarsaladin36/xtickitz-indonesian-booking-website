@@ -4,12 +4,14 @@ import TickitzBigCardStyle from "../components/BigImageCard.module.css";
 
 class TickitzBigImage extends Component {
   render() {
+    // console.log(this.props);
+    const { movieImage } = this.props;
     return (
       <div>
         <Card className={TickitzBigCardStyle.image_size_cards}>
           <Card.Body>
             <img
-              src="/img/showing-movie-1.jpg"
+              src={`http://localhost:5000/api/${movieImage}`}
               className={TickitzBigCardStyle.big_image_cards}
               alt="now showing"
             />

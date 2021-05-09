@@ -18,3 +18,9 @@
 .image_delete_button {
   width: 140px;
 }
+
+.image_size {
+  width: 159px;
+  height: 224px;
+  object-fit: cover;
+}

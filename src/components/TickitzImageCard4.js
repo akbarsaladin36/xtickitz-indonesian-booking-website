@@ -2,10 +2,10 @@ import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import TickitzCardStyle from "../components/ImageCard.module.css";
 
-class TickitzImage extends Component {
+class TickitzImage4 extends Component {
   render() {
     // console.log(this.props);
-    const { movie_image } = this.props.data;
+    const { movie_image } = this.props;
     return (
       <div>
         <Card className={TickitzCardStyle.now_showing_cards_image}>
@@ -22,4 +22,4 @@ class TickitzImage extends Component {
   }
 }
 
-export default TickitzImage;
+export default TickitzImage4;

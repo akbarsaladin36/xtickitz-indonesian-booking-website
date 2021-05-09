@@ -1,0 +1,13 @@
+.profile_update_button {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+  width: 40%;
+}
+
+.profile_update_button:hover {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+  width: 40%;
+}

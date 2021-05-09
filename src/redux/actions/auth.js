@@ -7,6 +7,13 @@ export const login = (data) => {
   };
 };
 
+export const register = (data) => {
+  return {
+    type: "REGISTER",
+    payload: axiosApiIntances.post("auth/register", data),
+  };
+};
+
 export const logout = () => {
   return {
     type: "LOGOUT",

@@ -29,6 +29,28 @@ const auth = (state = initialState, action) => {
         data: {},
         msg: action.payload.response.data.msg,
       };
+    case "REGISTER_PENDING":
+      return {
+        ...state,
+        isLoading: true,
+        isError: false,
+      };
+    case "REGISTER_FULFILLED":
+      return {
+        ...state,
+        isLoading: false,
+        isError: false,
+        data: action.payload.data.data,
+        msg: action.payload.data.msg,
+      };
+    case "REGISTER_REJECTED":
+      return {
+        ...state,
+        isLoading: false,
+        isError: true,
+        data: {},
+        msg: action.payload.response.data.msg,
+      };
     default:
       return state;
   }

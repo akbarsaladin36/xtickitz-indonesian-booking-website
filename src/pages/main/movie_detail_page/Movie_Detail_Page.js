@@ -4,7 +4,9 @@ import TickitzFooter from "../../../components/TickitzFooter";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import TickitzBigImage from "../../../components/TickitzBigImageCard";
 import TickitzImage2 from "../../../components/TickitzImageCard2";
-import axiosApiIntances from "../../../utils/axios";
+// import axiosApiIntances from "../../../utils/axios";
+import { connect } from "react-redux";
+import { getOneMovie } from "../../../redux/actions/movie";
 
 class MovieDetailPage extends Component {
   constructor(props) {
@@ -21,19 +23,21 @@ class MovieDetailPage extends Component {
 
   getMovieDataById = (id) => {
     // console.log(`Get data by id${id}`);
-    axiosApiIntances
-      .get(`tickitz/movie-detail/${id}`)
-      .then((res) => {
-        console.log(res.data.data[0]);
-        this.setState({ data: res.data.data[0] });
-      })
-      .catch((err) => {
-        console.log(err.response);
-      });
+    this.props.getOneMovie(id);
+    // axiosApiIntances
+    //   .get(`tickitz/movie-detail/${id}`)
+    //   .then((res) => {
+    //     console.log(res.data.data[0]);
+    //     this.setState({ data: res.data.data[0] });
+    //   })
+    //   .catch((err) => {
+    //     console.log(err.response);
+    //   });
   };
 
   render() {
-    console.log(this.state.data);
+    // console.log(this.state.data);
+    // console.log(this.props);
     const {
       movie_name,
       movie_genre,
@@ -42,14 +46,15 @@ class MovieDetailPage extends Component {
       movie_duration,
       movie_casts,
       movie_synopsis,
-    } = this.state.data;
+      movie_image,
+    } = this.props.movie.dataMovie;
     return (
       <div>
         <Container>
           <TickitzNavbar />
           <Row className="mt-5">
             <Col md={4} className="ml-4">
-              <TickitzBigImage />
+              <TickitzBigImage movieImage={movie_image} />
             </Col>
             <Col className="ml-4">
               <h4>{movie_name}</h4>
@@ -121,4 +126,10 @@ class MovieDetailPage extends Component {
   }
 }
 
-export default MovieDetailPage;
+const mapStateToProps = (state) => ({
+  movie: state.movie,
+});
+
+const mapDispatchToProps = { getOneMovie };
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieDetailPage);

@@ -11,12 +11,12 @@ import { connect } from "react-redux";
 import { getAllMovie } from "../../../redux/actions/movie";
 
 class Home extends Component {
-  constructor(props) {
-    super(props);
-    // this.state = {
-    //   data: [],
-    // };
-  }
+  // constructor(props) {
+  //   super(props);
+  //   // this.state = {
+  //   //   data: [],
+  //   // };
+  // }
 
   componentDidMount() {
     this.getDataMovieAll();
@@ -80,12 +80,8 @@ class Home extends Component {
           <Row className="mt-4 ml-5">
             {this.props.movie.dataMovie.map((item, index) => {
               return (
-                <Col
-                  md={2}
-                  className="mr-4 d-flex flex-column overflow-auto"
-                  key={index}
-                >
-                  <TickitzImage />
+                <Col md={2} className="mr-4" key={index}>
+                  <TickitzImage data={item} />
                 </Col>
               );
             })}
