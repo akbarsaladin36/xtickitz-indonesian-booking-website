@@ -42,7 +42,7 @@ class App extends Component {
                 component={AdminPage}
               />
               <PrivateRoute
-                path="/main/profile-page"
+                path="/main/profile-page/:id"
                 exact
                 component={ProfilePage}
               />

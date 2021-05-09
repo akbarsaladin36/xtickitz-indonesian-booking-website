@@ -7,7 +7,7 @@ const initialState = {
 
 const user = (state = initialState, action) => {
   switch (action.type) {
-    case "GET_USER_PENDING": {
+    case "GET_PROFILE_PENDING": {
       return {
         ...state,
         isLoading: true,
@@ -15,17 +15,17 @@ const user = (state = initialState, action) => {
       };
     }
 
-    case "GET_USER_FULFILLED": {
+    case "GET_PROFILE_FULFILLED": {
       return {
         ...state,
         isLoading: false,
         isError: false,
-        dataUser: action.payload.data.data,
+        dataUser: action.payload.data.data[0],
         msg: action.payload.data.msg,
       };
     }
 
-    case "GET_USER_REJECTED": {
+    case "GET_PROFILE_REJECTED": {
       return {
         ...state,
         isLoading: false,

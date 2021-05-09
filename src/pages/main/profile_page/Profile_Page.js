@@ -4,17 +4,40 @@ import TickitzNavbar from "../../../components/TickitzNavbar";
 import TickitzFooter from "../../../components/TickitzFooter";
 import ProfilePageStyle from "./ProfilePage.module.css";
 import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { getProfile } from "../../../redux/actions/user";
 
 class ProfilePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       form: {
+        userFirstName: "",
+        userLastName: "",
         userEmail: "",
+        userPhoneNumber: "",
+        userNewPassword: "",
+        userConfirmPassword: "",
       },
     };
   }
+
+  componentDidMount() {
+    const { id } = this.props.match.params;
+    this.getDataUserById(id);
+  }
+
+  getDataUserById = (id) => {
+    this.props.getProfile(id);
+  };
   render() {
+    console.log(this.props.user.dataUser);
+    const {
+      user_account_first_name,
+      user_account_last_name,
+      user_account_email,
+      user_account_phone_number,
+    } = this.props.user.dataUser;
     return (
       <div>
         <Container>
@@ -26,7 +49,9 @@ class ProfilePage extends Component {
                 <img src="/img/profile-picture-information.png" alt="" />
               </div>
               <div className="text-center">
-                <p>Jonas El Rodriguez</p>
+                <p>
+                  {user_account_first_name} {user_account_last_name}
+                </p>
                 <p>Moviegoers</p>
               </div>
               <hr />
@@ -46,13 +71,21 @@ class ProfilePage extends Component {
                   <Col>
                     <Form.Group>
                       <Form.Label>First Name</Form.Label>
-                      <Form.Control type="text" placeholder="First name" />
+                      <Form.Control
+                        type="text"
+                        placeholder="First name"
+                        value={user_account_first_name}
+                      />
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group>
                       <Form.Label>Last Name</Form.Label>
-                      <Form.Control type="text" placeholder="Last name" />
+                      <Form.Control
+                        type="text"
+                        placeholder="Last name"
+                        value={user_account_last_name}
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -60,13 +93,21 @@ class ProfilePage extends Component {
                   <Col>
                     <Form.Group>
                       <Form.Label>E-mail</Form.Label>
-                      <Form.Control type="email" placeholder="E-mail" />
+                      <Form.Control
+                        type="email"
+                        placeholder="E-mail"
+                        value={user_account_email}
+                      />
                     </Form.Group>
                   </Col>
                   <Col>
                     <Form.Group>
                       <Form.Label>Phone Number</Form.Label>
-                      <Form.Control type="text" placeholder="Phone Number" />
+                      <Form.Control
+                        type="text"
+                        placeholder="Phone Number"
+                        value={user_account_phone_number}
+                      />
                     </Form.Group>
                   </Col>
                 </Row>
@@ -114,4 +155,10 @@ class ProfilePage extends Component {
   }
 }
 
-export default ProfilePage;
+const mapStateToProps = (state) => ({
+  user: state.user,
+});
+
+const mapDispatchToProps = { getProfile };
+
+export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);

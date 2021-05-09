@@ -28,7 +28,7 @@ class TickitzNavbar extends Component {
                 <Nav.Link href="/main/payment-page" className="mx-3">
                   Payment
                 </Nav.Link>
-                <Nav.Link href="#link" className="mx-3">
+                <Nav.Link href="/main/profile-page/:id" className="mx-3">
                   Profile
                 </Nav.Link>
               </Nav>
