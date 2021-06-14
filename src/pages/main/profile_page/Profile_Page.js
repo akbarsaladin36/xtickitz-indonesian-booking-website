@@ -5,7 +5,11 @@ import TickitzFooter from "../../../components/TickitzFooter";
 import ProfilePageStyle from "./ProfilePage.module.css";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import { getProfile } from "../../../redux/actions/user";
+import {
+  getProfile,
+  updateProfile,
+  updateProfilePassword,
+} from "../../../redux/actions/user";
 
 class ProfilePage extends Component {
   constructor(props) {
@@ -19,6 +23,7 @@ class ProfilePage extends Component {
         userNewPassword: "",
         userConfirmPassword: "",
       },
+      userId: "",
     };
   }
 
@@ -30,13 +35,25 @@ class ProfilePage extends Component {
   getDataUserById = (id) => {
     this.props.getProfile(id);
   };
+
+  updateProfileData = (event, id) => {
+    event.preventDefault();
+    // console.log(this.props)
+    const formData = new FormData();
+    formData.append("userFirstName", this.state.form.userFirstName);
+    formData.append("userLastName", this.state.form.userLastName);
+    formData.append("userEmail", this.state.form.userEmail);
+    formData.append("userPhoneNumber", this.state.form.userPhoneNumber);
+    this.props.updateProfile(id, formData).then((res) => {
+      this.props.getProfile(id);
+    });
+  };
+
   render() {
-    console.log(this.props.user.dataUser);
+    // console.log(this.props.user.dataUser);
     const {
       user_account_first_name,
       user_account_last_name,
-      user_account_email,
-      user_account_phone_number,
     } = this.props.user.dataUser;
     return (
       <div>
@@ -66,7 +83,7 @@ class ProfilePage extends Component {
               <hr className="mb-5" />
               <p className="mt-3 ml-3">Detail Information</p>
               <hr className="mb-2 ml-3" />
-              <Form className="ml-3 mt-5">
+              <Form onSubmit={this.updateProfileData} className="ml-3 mt-5">
                 <Row>
                   <Col>
                     <Form.Group>
@@ -74,7 +91,7 @@ class ProfilePage extends Component {
                       <Form.Control
                         type="text"
                         placeholder="First name"
-                        value={user_account_first_name}
+                        name="userFirstName"
                       />
                     </Form.Group>
                   </Col>
@@ -84,7 +101,7 @@ class ProfilePage extends Component {
                       <Form.Control
                         type="text"
                         placeholder="Last name"
-                        value={user_account_last_name}
+                        name="userLastPassword"
                       />
                     </Form.Group>
                   </Col>
@@ -96,7 +113,7 @@ class ProfilePage extends Component {
                       <Form.Control
                         type="email"
                         placeholder="E-mail"
-                        value={user_account_email}
+                        name="userEmail"
                       />
                     </Form.Group>
                   </Col>
@@ -106,12 +123,13 @@ class ProfilePage extends Component {
                       <Form.Control
                         type="text"
                         placeholder="Phone Number"
-                        value={user_account_phone_number}
+                        name="userPhoneNumber"
                       />
                     </Form.Group>
                   </Col>
                 </Row>
                 <Button
+                  type="submit"
                   className={`${ProfilePageStyle.profile_update_button} mt-3`}
                 >
                   Update Now
@@ -126,6 +144,7 @@ class ProfilePage extends Component {
                       <Form.Label>New Password</Form.Label>
                       <Form.Control
                         type="password"
+                        name="newPassword"
                         placeholder="New Password"
                       />
                     </Form.Group>
@@ -135,12 +154,14 @@ class ProfilePage extends Component {
                       <Form.Label>Confirm Password</Form.Label>
                       <Form.Control
                         type="password"
+                        name="confirmPassword"
                         placeholder="Confirm Password"
                       />
                     </Form.Group>
                   </Col>
                 </Row>
                 <Button
+                  type="submit"
                   className={`${ProfilePageStyle.profile_update_button} mt-3`}
                 >
                   Update Now
@@ -159,6 +180,6 @@ const mapStateToProps = (state) => ({
   user: state.user,
 });
 
-const mapDispatchToProps = { getProfile };
+const mapDispatchToProps = { getProfile, updateProfile, updateProfilePassword };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ProfilePage);
