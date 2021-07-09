@@ -1,18 +1,29 @@
 import React, { Component } from "react";
 import TickitzNavbar from "../../../components/TickitzNavbar";
 import TickitzFooter from "../../../components/TickitzFooter";
-import { Container, Row, Col, Form, Button } from "react-bootstrap";
+import {
+  Container,
+  Row,
+  Col,
+  Form,
+  Button,
+  Dropdown,
+  DropdownButton,
+} from "react-bootstrap";
 import TickitzImageCard4 from "../../../components/TickitzImageCard4";
 import AdminPageStyle from "./AdminPageStyle.module.css";
 import TickitzImageCard3 from "../../../components/TickitzImageCard3";
-// import axiosApiIntances from "../../../utils/axios";
 import { connect } from "react-redux";
 import {
   getAllMovie,
+  getOneMovie,
   createMovie,
   updateMovie,
+  updateImageMovie,
   deleteMovie,
 } from "../../../redux/actions/movie";
+import ReactPaginate from "react-paginate";
+import axiosApiIntances from "../../../utils/axios";
 
 class AdminPage extends Component {
   constructor(props) {
@@ -33,27 +44,64 @@ class AdminPage extends Component {
       data: [],
       isUpdate: false,
       movieId: "",
+      isSuccess: false,
+      isError: false,
+      searchResult: "",
+      sort: "",
+      page: 1,
+      limit: 5,
+      pagination: {},
     };
   }
 
   componentDidMount() {
-    this.getDataMovieAll();
+    this.getSearchData();
   }
 
-  getDataMovieAll = () => {
-    console.log("Get Movie All!");
-    // console.log(this.props.movie);
-    console.log(this.props);
-    this.props.getAllMovie();
-    // axiosApiIntances
-    //   .get("home")
-    //   .then((res) => {
-    //     console.log(res);
-    //     this.setState({ data: res.data.data });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
+  getSearchData = () => {
+    const { searchResult, sort, page, limit } = this.state;
+    let urlParam = `?page=${page}&limit=${limit}`;
+    if (searchResult) {
+      urlParam += `&search=${searchResult}`;
+    }
+    if (sort) {
+      urlParam += `&sort=${sort}`;
+    }
+    this.props.history.push(`/main/admin-page${urlParam}`);
+    axiosApiIntances
+      .get(
+        `movie/search-movie/search?searchResult=${searchResult}&sort=${sort}&page=${page}&limit=${limit}`
+      )
+      .then((res) => {
+        this.setState({
+          data: res.data.data,
+          pagination: res.data.pagination,
+        });
+      })
+      .catch((err) => {
+        this.setState({
+          hasError: err.response.data.msg,
+        });
+      });
+  };
+
+  handleSearch = (event) => {
+    if (event.key === "Enter") {
+      this.setState({ page: 1, searchResult: event.target.value }, () => {
+        this.getSearchData();
+      });
+    }
+  };
+
+  handleSort = (sort) => {
+    this.setState(
+      {
+        sort: sort,
+      },
+      () => {
+        this.getSearchData();
+      }
+    );
   };
 
   changeText = (event) => {
@@ -66,17 +114,20 @@ class AdminPage extends Component {
   };
 
   handleImage = (event) => {
-    this.setState({
-      form: {
+    const formData = new FormData();
+    formData.append("imageFile", event.target.files[0]);
+    const { movieId } = this.state;
+    this.props.updateImageMovie(movieId, formData).then((res) => {
+      this.getDataMovieAll();
+      this.setState({
         ...this.state.form,
-        movieImage: event.target.files[0],
-      },
+        movieImage: res.action.payload.data.data.movie_image,
+      });
     });
   };
 
   resetData = (event) => {
     event.preventDefault();
-    console.log("Sudah direset.");
     this.setState({
       form: {
         movieName: "",
@@ -90,55 +141,29 @@ class AdminPage extends Component {
         movieSynopsis: "",
         movieImage: null,
       },
+      isUpdate: false,
     });
   };
 
   submitData = (event) => {
     event.preventDefault();
-    console.log("Save Data!");
-    // console.log(this.state.form);
-    const formData = new FormData();
-    formData.append("movieName", this.state.form.movieName);
-    formData.append("movieGenre", this.state.form.movieGenre);
-    formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
-    formData.append("movieDirectedBy", this.state.form.movieDirectedBy);
-    formData.append(
-      "movieDuration",
-      `${this.state.form.movieDurationHour}:${this.state.form.movieDurationMinutes}:00`
-    );
-    formData.append("movieDurationHour", this.state.form.movieDurationHour);
-    formData.append(
-      "movieDurationMinutes",
-      this.state.form.movieDurationMinutes
-    );
-    formData.append("movieCasts", this.state.form.movieCasts);
-    formData.append("movieSynopsis", this.state.form.movieSynopsis);
-    formData.append("movieImage", this.state.form.movieImage);
-
-    this.props.createMovie(formData).then((res) => {
+    const data = {
+      movieName: this.state.form.movieName,
+      movieGenre: this.state.form.movieGenre,
+      movieReleaseDate: this.state.form.movieReleaseDate,
+      movieDirectedBy: this.state.form.movieDirectedBy,
+      movieDuration: `${this.state.form.movieDurationHour}:${this.state.form.movieDurationMinutes}:00`,
+      movieDurationMinutes: this.state.form.movieDurationMinutes,
+      movieCasts: this.state.form.movieCasts,
+      movieSynopsis: this.state.form.movieSynopsis,
+    };
+    this.props.createMovie(data).then((res) => {
       this.props.getAllMovie();
     });
-
-    // const setData = {
-    //   ...this.state.form,
-    //   movieDuration: `${this.state.form.movieDurationHour}:${this.state.form.movieDurationMinutes}:00`,
-    // };
-
-    // console.log(setData);
-
-    // axiosApiIntances
-    //   .post("home", setData)
-    //   .then((res) => {
-    //     this.resetData(event);
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
   };
 
   setUpdate = (data) => {
-    // console.log("Set updated!");
-    // console.log(data);
+    console.log(data);
     this.setState({
       form: {
         movieName: data.movie_name,
@@ -159,71 +184,39 @@ class AdminPage extends Component {
 
   updateData = (event) => {
     event.preventDefault();
-    // console.log(this.props)
-    const formData = new FormData();
-    formData.append("movieName", this.state.form.movieName);
-    formData.append("movieGenre", this.state.form.movieGenre);
-    formData.append("movieReleaseDate", this.state.form.movieReleaseDate);
-    formData.append("movieDirectedBy", this.state.form.movieDirectedBy);
-    formData.append(
-      "movieDuration",
-      `${this.state.form.movieDurationHour}:${this.state.form.movieDurationMinutes}:00`
-    );
-    formData.append("movieDurationHour", this.state.form.movieDurationHour);
-    formData.append(
-      "movieDurationMinutes",
-      this.state.form.movieDurationMinutes
-    );
-    formData.append("movieCasts", this.state.form.movieCasts);
-    formData.append("movieSynopsis", this.state.form.movieSynopsis);
-    formData.append("movieImage", this.state.form.movieImage);
+    const data = {
+      movieName: this.state.form.movieName,
+      movieGenre: this.state.form.movieGenre,
+      movieReleaseDate: this.state.form.movieReleaseDate,
+      movieDirectedBy: this.state.form.movieDirectedBy,
+      movieDuration: `${this.state.form.movieDurationHour}:${this.state.form.movieDurationMinutes}:00`,
+      movieDurationMinutes: this.state.form.movieDurationMinutes,
+      movieCasts: this.state.form.movieCasts,
+      movieSynopsis: this.state.form.movieSynopsis,
+    };
     const { movieId } = this.state;
-    this.props.updateMovie(movieId, formData).then((res) => {
+    this.props.updateMovie(movieId, data).then((res) => {
       this.props.getAllMovie();
       this.setState({ isUpdate: false });
       this.resetData(event);
     });
-    // const updateData = {
-    //   ...this.state.form,
-    //   movieDuration: `${this.state.form.movieDurationHour}:${this.state.form.movieDurationMinutes}:00`,
-    // };
-
-    // console.log(updateData);
-
-    // axiosApiIntances
-    //   .patch(`tickitz/movie-detail/${id}`, updateData)
-    //   .then((res) => {
-    //     this.getDataMovieAll();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
-    // // console.log(this.state.movieId);
-    // // console.log(this.state.form);
-    // this.setState({ isUpdate: false });
-    // this.resetData(event);
   };
 
   deleteData = (id) => {
-    console.log("Delete Data!");
-    console.log(id);
-    // const { movieId } = this.state;
     this.props.deleteMovie(id).then((res) => {
       this.getDataMovieAll();
     });
-    // axiosApiIntances
-    //   .delete(`/tickitz/movie-detail/${id}`)
-    //   .then((res) => {
-    //     this.getDataMovieAll();
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
+  };
+
+  handlePagination = (event) => {
+    const selectedPage = event.selected + 1;
+    this.setState({ page: selectedPage }, () => {
+      this.getSearchData();
+    });
   };
 
   render() {
-    console.log(this.props);
-    const { isUpdate, movieId } = this.state;
+    const { isUpdate } = this.state;
     const {
       movieName,
       movieGenre,
@@ -235,7 +228,7 @@ class AdminPage extends Component {
       movieSynopsis,
       movieImage,
     } = this.state.form;
-    // const { movie_image } = this.props.movie.dataMovie;
+    const { totalPage } = this.state.pagination;
     return (
       <div>
         <Container>
@@ -248,14 +241,7 @@ class AdminPage extends Component {
                   <TickitzImageCard4 movieImage={movieImage} />
                 </Col>
                 <Col className="ml-5">
-                  <Form
-                    onSubmit={
-                      isUpdate
-                        ? (event) => this.updateData(event, movieId)
-                        : (event) => this.submitData(event)
-                    }
-                    onReset={(event) => this.resetData(event)}
-                  >
+                  <Form>
                     <Form.Row>
                       <Col>
                         <Form.Group>
@@ -375,14 +361,18 @@ class AdminPage extends Component {
                         <Button
                           variant="primary"
                           className={`${AdminPageStyle.reset_form_button} mr-3`}
-                          type="reset"
+                          onClick={(event) => this.resetData(event)}
                         >
                           Reset
                         </Button>
                         <Button
                           variant="primary"
                           className={AdminPageStyle.submit_form_button}
-                          type="submit"
+                          onClick={
+                            isUpdate
+                              ? (event) => this.updateData(event)
+                              : (event) => this.submitData(event)
+                          }
                         >
                           {isUpdate ? "Update" : "Submit"}
                         </Button>
@@ -397,28 +387,37 @@ class AdminPage extends Component {
             <Col className="mt-5 ml-5">
               <h3>Data Movie</h3>
             </Col>
-            <Col className="mt-5">
-              <Form>
-                <Form.Row className="justify-content-end">
-                  <Form.Group className="mr-3">
-                    <Form.Control as="select" name="sort" placeholder="sort">
-                      <option>Release Date</option>
-                      <option>Movie Name</option>
-                    </Form.Control>
-                  </Form.Group>
-                  <Form.Group>
-                    <Form.Control
-                      name="searchQuery"
-                      type="search"
-                      placeholder="Search movie name..."
-                    />
-                  </Form.Group>
-                </Form.Row>
-              </Form>
+            <Col className={`${AdminPageStyle.data_movie_row} mt-5`}>
+              <Form.Row className="justify-content-end">
+                <DropdownButton
+                  id="dropdown-basic-button"
+                  title="Sort"
+                  className="d-grid gap-2 mr-2"
+                >
+                  <Dropdown.Item
+                    onClick={() => this.handleSort("movie_release_date ASC")}
+                  >
+                    Release Date
+                  </Dropdown.Item>
+                  <Dropdown.Item
+                    onClick={() => this.handleSort("movie_name ASC")}
+                  >
+                    Movie Name
+                  </Dropdown.Item>
+                </DropdownButton>
+                <Form.Group>
+                  <Form.Control
+                    name="searchResult"
+                    type="text"
+                    onKeyDown={(event) => this.handleSearch(event)}
+                    placeholder="Search movie name..."
+                  />
+                </Form.Group>
+              </Form.Row>
             </Col>
           </Row>
           <Row className="ml-3">
-            {this.props.movie.dataMovie.map((item, index) => {
+            {this.state.data.map((item, index) => {
               return (
                 <Col md={2} className="ml-4" key={index}>
                   <TickitzImageCard3
@@ -430,6 +429,19 @@ class AdminPage extends Component {
               );
             })}
           </Row>
+          <ReactPaginate
+            previousLabel={"prev"}
+            nextLabel={"next"}
+            breakLabel={"..."}
+            breakClassName={"break-me"}
+            pageCount={totalPage} //total page
+            marginPagesDisplayed={2}
+            pageRangeDisplayed={5}
+            onPageChange={this.handlePagination}
+            containerClassName={AdminPageStyle.pagination}
+            subContainerClassName={`${AdminPageStyle.pages} ${AdminPageStyle.pagination}`}
+            activeClassName={AdminPageStyle.active}
+          />
           <TickitzFooter />
         </Container>
       </div>
@@ -438,13 +450,16 @@ class AdminPage extends Component {
 }
 
 const mapStateToProps = (state) => ({
+  auth: state.auth,
   movie: state.movie,
 });
 
 const mapDispatchToProps = {
   getAllMovie,
+  getOneMovie,
   createMovie,
   updateMovie,
+  updateImageMovie,
   deleteMovie,
 };
 

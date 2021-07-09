@@ -14,7 +14,7 @@ export const register = (data) => {
   };
 };
 
-export const logout = () => {
+export const logout = (data) => {
   return {
     type: "LOGOUT",
   };

@@ -11,7 +11,7 @@ class TickitzBigImage extends Component {
         <Card className={TickitzBigCardStyle.image_size_cards}>
           <Card.Body>
             <img
-              src={`http://localhost:5000/api/${movieImage}`}
+              src={`${process.env.REACT_APP_IMAGE_URL}${movieImage}`}
               className={TickitzBigCardStyle.big_image_cards}
               alt="now showing"
             />

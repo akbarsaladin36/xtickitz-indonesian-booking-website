@@ -106,3 +106,31 @@
 .hr_line {
   border-color: black !important;
 }
+
+/* Responsive Website */
+
+@media only screen and (max-width: 600px) {
+  .left_background {
+    display: none;
+  }
+
+  .right_column {
+    margin-left: 80px !important;
+  }
+
+  .sign_up_button {
+    width: 85%;
+  }
+
+  .sign_up_button:hover {
+    width: 85%;
+  }
+
+  .form_size {
+    width: 391px !important;
+  }
+
+  .other_login_size {
+    margin-right: 100px;
+  }
+}

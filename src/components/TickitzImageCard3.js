@@ -12,11 +12,19 @@ class TickitzImageCard3 extends Component {
       <div>
         <Card className={TickitzCardStyle.now_showing_cards_image}>
           <Card.Body className="text-center">
-            <img
-              src={`http://localhost:5000/api/${movie_image}`}
-              alt="now showing"
-              className={TickitzCardStyle.image_size}
-            />
+            {movie_image ? (
+              <img
+                src={`http://localhost:3002/backend1/api/${movie_image}`}
+                alt="now showing"
+                className={TickitzCardStyle.image_size}
+              />
+            ) : (
+              <img
+                src="/img/no-poster-available-picture.jpg"
+                alt="now showing"
+                className={TickitzCardStyle.image_size}
+              />
+            )}
             <p className="mt-3">{movie_name}</p>
             <p>{movie_genre}</p>
             <Button

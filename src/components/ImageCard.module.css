@@ -1,3 +1,7 @@
+.card_size {
+  padding-right: 100px;
+}
+
 .now_showing_cards_image {
   width: 129%;
 }
@@ -23,4 +27,5 @@
   width: 159px;
   height: 224px;
   object-fit: cover;
+  text-align: center;
 }

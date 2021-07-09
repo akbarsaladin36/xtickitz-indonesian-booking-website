@@ -12,11 +12,11 @@ class TickitzImageCard1 extends Component {
     // console.log(this.props);
     const { movie_id, movie_name, movie_genre, movie_image } = this.props.data;
     return (
-      <div>
+      <div className={TickitzCardStyle.card_size}>
         <Card className={TickitzCardStyle.now_showing_cards_image}>
           <Card.Body className="text-center">
             <img
-              src={`http://localhost:5000/api/${movie_image}`}
+              src={`${process.env.REACT_APP_IMAGE_URL}${movie_image}`}
               className={TickitzCardStyle.image_size}
               alt="now showing"
             />

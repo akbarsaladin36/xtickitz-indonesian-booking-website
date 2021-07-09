@@ -4,7 +4,6 @@ import TickitzFooter from "../../../components/TickitzFooter";
 import { Container, Row, Col, Form } from "react-bootstrap";
 import TickitzBigImage from "../../../components/TickitzBigImageCard";
 import TickitzImage2 from "../../../components/TickitzImageCard2";
-// import axiosApiIntances from "../../../utils/axios";
 import { connect } from "react-redux";
 import { getOneMovie } from "../../../redux/actions/movie";
 
@@ -17,27 +16,16 @@ class MovieDetailPage extends Component {
   }
   componentDidMount() {
     const { id } = this.props.match.params;
-    // console.log(id);
     this.getMovieDataById(id);
   }
 
   getMovieDataById = (id) => {
-    // console.log(`Get data by id${id}`);
     this.props.getOneMovie(id);
-    // axiosApiIntances
-    //   .get(`tickitz/movie-detail/${id}`)
-    //   .then((res) => {
-    //     console.log(res.data.data[0]);
-    //     this.setState({ data: res.data.data[0] });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
   };
 
+  // getCinema
+
   render() {
-    // console.log(this.state.data);
-    // console.log(this.props);
     const {
       movie_name,
       movie_genre,
@@ -47,7 +35,7 @@ class MovieDetailPage extends Component {
       movie_casts,
       movie_synopsis,
       movie_image,
-    } = this.props.movie.dataMovie;
+    } = this.props.movie.dataMovieDetail;
     return (
       <div>
         <Container>

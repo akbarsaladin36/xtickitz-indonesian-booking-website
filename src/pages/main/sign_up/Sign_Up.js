@@ -14,6 +14,8 @@ class SignUp extends Component {
         userEmail: "",
         userPassword: "",
       },
+      isSuccess: false,
+      isError: false,
     };
   }
 
@@ -28,11 +30,58 @@ class SignUp extends Component {
 
   handleRegister = (event) => {
     event.preventDefault();
-    this.props.register(this.state.form);
+    const data = {
+      userEmail: this.state.form.userEmail,
+      userName: this.state.form.userName,
+      userPassword: this.state.form.userPassword,
+    };
+
+    if (
+      this.state.form.userEmail === "" &&
+      this.state.form.userName === "" &&
+      this.state.form.userPassword === ""
+    ) {
+      this.setState({
+        isError: "Fill all the form below to register!",
+      });
+    } else if (this.state.form.userName === "") {
+      this.setState({
+        isError: "Fill the username form!",
+      });
+    } else if (this.state.form.userEmail === "") {
+      this.setState({
+        isError: "Fill the email form!",
+      });
+    } else if (this.state.form.userPassword === "") {
+      this.setState({
+        isError: "Fill the password form!",
+      });
+    } else {
+      this.props
+        .register(data)
+        .then((res) => {
+          // console.log(res);
+          this.setState({
+            isSuccess: res.action.payload.data.msg,
+            isError: false,
+          });
+          window.setTimeout(() => {
+            this.props.history.push("/auth/sign-in");
+          }, 3000);
+        })
+        .catch((err) => {
+          console.log(err.response);
+          this.setState({
+            isError: err.response.data.msg,
+            isSuccess: false,
+          });
+        });
+    }
   };
 
   render() {
-    const { userName, userEmail, userPassword } = this.state;
+    const { userName, userEmail, userPassword, isSuccess, isError } =
+      this.state;
     return (
       <div>
         <Row>
@@ -64,19 +113,20 @@ class SignUp extends Component {
               Done
             </h5>
           </Col>
-          <Col md={4} className="mt-5 ml-5 pt-5">
+          <Col md={4} className={`${SignUpStyle.right_column} mt-5 ml-5 pt-5`}>
             <h2 className={`${SignUpStyle.signup_text} mt-5`}>
               Fill your additional details
             </h2>
-            <Form onSubmit={this.handleRegister}>
+            <Form>
               <Form.Group>
                 <Form.Label>Username</Form.Label>
                 <Form.Control
-                  type="username"
+                  type="text"
                   name="userName"
                   value={userName}
                   onChange={(event) => this.changeText(event)}
                   placeholder="Write your email"
+                  className={SignUpStyle.form_size}
                 />
               </Form.Group>
               <Form.Group>
@@ -87,6 +137,7 @@ class SignUp extends Component {
                   value={userEmail}
                   onChange={(event) => this.changeText(event)}
                   placeholder="Write your email"
+                  className={SignUpStyle.form_size}
                 />
               </Form.Group>
               <Form.Group>
@@ -97,30 +148,39 @@ class SignUp extends Component {
                   value={userPassword}
                   onChange={(event) => this.changeText(event)}
                   placeholder="Write your password"
+                  className={SignUpStyle.form_size}
                 />
               </Form.Group>
+              {isSuccess && (
+                <div className="alert alert-success">{isSuccess}</div>
+              )}
+              {isError && <div className="alert alert-danger">{isError}</div>}
               <Button
-                type="submit"
                 className={`${SignUpStyle.sign_up_button} mt-3`}
+                onClick={this.handleRegister}
               >
                 Join for free now
               </Button>
             </Form>
-            <p className="text-muted text-center mt-4">
+            <p
+              className={`${SignUpStyle.other_login_size} text-muted text-center mt-4`}
+            >
               Did you already have an account?
               <Link
-                to="/main/sign-in"
+                to="/auth/sign-in"
                 className={`${SignUpStyle.reset_now} ml-2`}
               >
                 Log In
               </Link>
             </p>
-            <Row className="mt-4">
+            <Row className={`${SignUpStyle.other_login_size} mt-4`}>
               <hr />
               <p>Or</p>
               <hr />
             </Row>
-            <Row className="justify-content-center">
+            <Row
+              className={`${SignUpStyle.other_login_size} justify-content-center`}
+            >
               <Button
                 className={`${SignUpStyle.social_media_button} ml-2 mr-4 bg-light text-muted`}
               >

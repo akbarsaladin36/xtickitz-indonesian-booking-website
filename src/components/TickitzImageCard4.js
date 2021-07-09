@@ -4,17 +4,24 @@ import TickitzCardStyle from "../components/ImageCard.module.css";
 
 class TickitzImage4 extends Component {
   render() {
-    // console.log(this.props);
-    const { movie_image } = this.props;
+    const { movieImage } = this.props;
     return (
       <div>
         <Card className={TickitzCardStyle.now_showing_cards_image}>
           <Card.Body>
-            <img
-              src={`http://localhost:5000/api/${movie_image}`}
-              alt="now showing"
-              className={TickitzCardStyle.image_size}
-            />
+            {movieImage ? (
+              <img
+                src={`http://localhost:3002/backend1/api/${movieImage}`}
+                alt="now showing"
+                className={TickitzCardStyle.image_size}
+              />
+            ) : (
+              <img
+                src="/img/no-poster-available-picture.jpg"
+                alt="now showing"
+                className={TickitzCardStyle.image_size}
+              />
+            )}
           </Card.Body>
         </Card>
       </div>

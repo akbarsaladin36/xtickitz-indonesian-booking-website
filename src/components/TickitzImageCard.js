@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Card } from "react-bootstrap";
 import TickitzCardStyle from "../components/ImageCard.module.css";
+require("dotenv").config();
 
 class TickitzImage extends Component {
   render() {
@@ -11,7 +12,7 @@ class TickitzImage extends Component {
         <Card className={TickitzCardStyle.now_showing_cards_image}>
           <Card.Body>
             <img
-              src={`http://localhost:5000/api/${movie_image}`}
+              src={`${process.env.REACT_APP_IMAGE_URL}${movie_image}`}
               alt="now showing"
               className={TickitzCardStyle.image_size}
             />

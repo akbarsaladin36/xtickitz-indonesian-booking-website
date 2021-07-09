@@ -13,6 +13,8 @@ class SignIn extends Component {
         userEmail: "",
         userPassword: "",
       },
+      isSuccess: false,
+      isError: false,
     };
   }
 
@@ -28,14 +30,41 @@ class SignIn extends Component {
   handleLogin = (event) => {
     event.preventDefault();
     // console.log(this.state.form);
-    this.props.login(this.state.form).then((result) => {
-      // console.log(this.props.auth.data.token);
-      localStorage.setItem("token", this.props.auth.data.token);
-      this.props.history.push("/main/home");
-    });
+    const data = {
+      userEmail: this.state.form.userEmail,
+      userPassword: this.state.form.userPassword,
+    };
+
+    if (
+      this.state.form.userEmail === "" &&
+      this.state.form.userPassword === ""
+    ) {
+      this.setState({
+        isError: "Fill all the form below to register!",
+      });
+    } else if (this.state.form.userEmail === "") {
+      this.setState({
+        isError: "Fill the email form!",
+      });
+    } else if (this.state.form.userPassword === "") {
+      this.setState({
+        isError: "Fill the password form!",
+      });
+    } else {
+      this.props.login(data).then((res) => {
+        localStorage.setItem("token", this.props.auth.data.token);
+        this.setState({
+          isSuccess: res.action.payload.data.msg,
+          isError: false,
+        });
+        window.setTimeout(() => {
+          this.props.history.push("/main/home");
+        }, 3000);
+      });
+    }
   };
   render() {
-    const { userEmail, userPassword } = this.state;
+    const { userEmail, userPassword, isSuccess, isError } = this.state;
     return (
       <div>
         <Row>
@@ -52,12 +81,12 @@ class SignIn extends Component {
             />
             <h1 className={SignInStyle.image_logo_text}>Wait, Watch, Wow!</h1>
           </Col>
-          <Col md={4} className="mt-5 ml-5 pt-5">
+          <Col md={4} className={`${SignInStyle.right_column} mt-5 ml-5 pt-5`}>
             <h2 className={`${SignInStyle.signin_text} mt-5`}>Sign In</h2>
             <p className="text-muted">
               Sign in with your data that you entered during your registration
             </p>
-            <Form onSubmit={this.handleLogin} className="mt-3">
+            <Form className="mt-3">
               <Form.Group>
                 <Form.Label>Email</Form.Label>
                 <Form.Control
@@ -66,6 +95,7 @@ class SignIn extends Component {
                   name="userEmail"
                   value={userEmail}
                   onChange={(event) => this.changeText(event)}
+                  className={SignInStyle.form_size}
                 />
               </Form.Group>
               <Form.Group>
@@ -76,27 +106,36 @@ class SignIn extends Component {
                   name="userPassword"
                   value={userPassword}
                   onChange={(event) => this.changeText(event)}
+                  className={SignInStyle.form_size}
                 />
               </Form.Group>
+              {isSuccess && (
+                <div className="alert alert-success">{isSuccess}</div>
+              )}
+              {isError && <div className="alert alert-danger">{isError}</div>}
               <Button
-                type="submit"
                 className={`${SignInStyle.sign_in_button} mt-3`}
+                onClick={this.handleLogin}
               >
                 Sign In
               </Button>
             </Form>
-            <p className="text-muted text-center mt-4">
+            <p
+              className={`${SignInStyle.other_login_size} text-muted text-center mt-4`}
+            >
               Forget password?
               <Link to="#" className={`${SignInStyle.reset_now} ml-2`}>
                 Reset Now
               </Link>
             </p>
-            <Row className="mt-4">
+            <Row className={`${SignInStyle.other_login_size} mt-4`}>
               <hr />
               <p>Or</p>
               <hr />
             </Row>
-            <Row className="justify-content-center">
+            <Row
+              className={`${SignInStyle.other_login_size} justify-content-center`}
+            >
               <Button
                 className={`${SignInStyle.social_media_button} ml-2 mr-4 bg-light text-muted`}
               >

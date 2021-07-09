@@ -23,3 +23,62 @@
   color: purple !important;
   background-color: white !important;
 }
+
+.sort_movie_button {
+  border-color: purple !important;
+  color: white !important;
+  background-color: purple !important;
+}
+
+.sort_movie_button:hover {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+}
+
+.pagination {
+  margin: 15px auto;
+  display: flex;
+  justify-content: center;
+  list-style: none;
+  outline: none;
+}
+.pagination > .active > a {
+  background-color: purple !important;
+  border-color: purple !important;
+  color: #fff;
+}
+.pagination > li > a {
+  border: 1px solid purple !important;
+  padding: 5px 10px;
+  outline: none;
+  cursor: pointer;
+}
+.pagination > .active > a,
+.pagination > .active > span,
+.pagination > .active > a:hover,
+.pagination > .active > span:hover,
+.pagination > .active > a:focus,
+.pagination > .active > span:focus {
+  background-color: #ccd1d8;
+  border-color: purple;
+  outline: none;
+}
+.pagination > li > a,
+.pagination > li > span {
+  color: purple;
+}
+.pagination > li:first-child > a,
+.pagination > li:first-child > span,
+.pagination > li:last-child > a,
+.pagination > li:last-child > span {
+  border-radius: unset;
+}
+
+/* Responsive Website */
+
+@media only screen and (max-width: 780px) {
+  .data_movie_row {
+    margin-top: 100px !important;
+  }
+}

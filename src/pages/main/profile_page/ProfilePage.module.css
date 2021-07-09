@@ -11,3 +11,61 @@
   background-color: white !important;
   width: 40%;
 }
+
+.formUserImage {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  border-radius: 20px;
+  width: max-content;
+  height: 60px;
+}
+.boxUpdateImage {
+  position: absolute;
+  background-color: transparent;
+  color: transparent;
+  width: 250px;
+  height: 60px;
+  border-radius: 20px;
+  visibility: visible;
+  margin: auto;
+  cursor: pointer;
+  display: flex;
+  z-index: 2;
+}
+.boxUpdateImage:hover {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  color: #ffffff !important;
+  background-color: purple !important;
+  border-color: purple !important;
+}
+.updateImage {
+  width: 300px;
+  color: transparent;
+  height: 60px;
+  border-radius: 20px;
+  visibility: visible;
+  margin: auto;
+  cursor: pointer;
+  z-index: 0;
+  display: flex;
+}
+
+.btnChoose {
+  position: absolute;
+  width: 250px;
+  height: 60px;
+  align-items: center;
+  border-radius: 20px;
+}
+
+.profile_image {
+  width: 200px;
+  height: 200px;
+}

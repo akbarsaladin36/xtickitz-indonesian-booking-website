@@ -6,38 +6,92 @@ import { Container, Row, Col, Button, Form } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import TickitzImage from "../../../components/TickitzImageCard";
 import TickitzImageCard1 from "../../../components/TickitzImageCard1";
-// import axiosApiIntances from "../../../utils/axios";
 import { connect } from "react-redux";
 import { getAllMovie } from "../../../redux/actions/movie";
+import axiosApiIntances from "../../../utils/axios";
 
 class Home extends Component {
-  // constructor(props) {
-  //   super(props);
-  //   // this.state = {
-  //   //   data: [],
-  //   // };
-  // }
+  constructor(props) {
+    super(props);
+    const month = [
+      "January",
+      "February",
+      "March",
+      "April",
+      "May",
+      "June",
+      "July",
+      "August",
+      "September",
+      "October",
+      "November",
+      "December",
+    ];
+    this.currentMonth = new Date();
+    this.state = {
+      data: [],
+      dataNowShowing: [],
+      activeMonth: month[this.currentMonth.getMonth()],
+    };
+  }
 
   componentDidMount() {
     this.getDataMovieAll();
+    this.getUpcomingMovies(this.currentMonth.getMonth() + 1);
+    this.getDataWithLimit();
   }
 
   getDataMovieAll = () => {
     console.log("Get Movie All!");
     this.props.getAllMovie();
-    // axiosApiIntances
-    //   .get("tickitz/home")
-    //   .then((res) => {
-    //     console.log(res);
-    //     this.setState({ data: res.data.data });
-    //   })
-    //   .catch((err) => {
-    //     console.log(err.response);
-    //   });
+  };
+
+  getDataWithLimit = () => {
+    axiosApiIntances
+      .get(`movie/search-movie/search?limit=5`)
+      .then((res) => {
+        this.setState({ dataNowShowing: res.data.data });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  getUpcomingMovies = (month) => {
+    axiosApiIntances
+      .get(`movie/upcoming-movie/${month}`)
+      .then((res) => {
+        this.setState({ data: res.data.data });
+      })
+      .catch((err) => {
+        console.log(err.response);
+      });
+  };
+
+  changeMonthButton = (event, month) => {
+    this.setState({
+      activeMonth: event.target.innerHTML,
+    });
+    this.getUpcomingMovies(month);
+  };
+
+  handleUpcomingMoviesMap = (month) => {
+    const { data } = this.state;
+    if (data.length > 0) {
+      return data.map((item, index) => {
+        return <TickitzImageCard1 data={item} key={index} />;
+      });
+    } else {
+      return (
+        <>
+          <h3 className="ml-3">No upcoming movie in this {month}</h3>
+        </>
+      );
+    }
   };
 
   render() {
-    // console.log(this.state);
+    const { activeMonth } = this.state;
     return (
       <div>
         <Container>
@@ -78,15 +132,17 @@ class Home extends Component {
             </Col>
           </Row>
           <Row className="mt-4 ml-5">
-            {this.props.movie.dataMovie.map((item, index) => {
-              return (
-                <Col md={2} className="mr-4" key={index}>
-                  <TickitzImage data={item} />
-                </Col>
-              );
-            })}
+            {this.state.dataNowShowing.length <= 0
+              ? null
+              : this.state.dataNowShowing.map((item, index) => {
+                  return (
+                    <Col md={2} className="mr-4" key={index}>
+                      <TickitzImage data={item} />
+                    </Col>
+                  );
+                })}
           </Row>
-          <Row className="mt-5 ml-2 overflow-hidden">
+          <Row className="mt-5 ml-2">
             <Col>
               <h6 className={TickitzHomeStyle.upcoming_movie_text_1}>
                 Upcoming Movies
@@ -98,67 +154,39 @@ class Home extends Component {
               </Link>
             </Col>
           </Row>
-          <Row className="mt-3">
+          <Row className={`${TickitzHomeStyle.button_month_slider} mt-3`}>
             <Col xs={1} className="ml-4">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1}`}
+                onClick={(event) => this.changeMonthButton(event, 1)}
               >
-                September
+                January
               </Button>
             </Col>
             <Col xs={1} className="ml-2">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1} ml-3`}
+                onClick={(event) => this.changeMonthButton(event, 2)}
               >
-                October
+                February
               </Button>
             </Col>
             <Col xs={1} className="ml-3">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 3)}
               >
-                November
+                March
               </Button>
             </Col>
             <Col xs={1} className="ml-4">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1} ml-4`}
-              >
-                December
-              </Button>
-            </Col>
-            <Col sm={1} className="ml-4">
-              <Button
-                variant="Primary"
-                className={`${TickitzHomeStyle.button_month_1} ml-4`}
-              >
-                January
-              </Button>
-            </Col>
-            <Col sm={1} className="ml-4">
-              <Button
-                variant="Primary"
-                className={`${TickitzHomeStyle.button_month_1} ml-4`}
-              >
-                February
-              </Button>
-            </Col>
-            <Col sm={1} className="ml-4">
-              <Button
-                variant="Primary"
-                className={`${TickitzHomeStyle.button_month_1} ml-4`}
-              >
-                March
-              </Button>
-            </Col>
-            <Col sm={1} className="ml-4">
-              <Button
-                variant="Primary"
-                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 4)}
               >
                 April
               </Button>
@@ -167,19 +195,77 @@ class Home extends Component {
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 5)}
               >
                 May
               </Button>
             </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 6)}
+              >
+                June
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 7)}
+              >
+                July
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 8)}
+              >
+                August
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 9)}
+              >
+                September
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 10)}
+              >
+                October
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 11)}
+              >
+                November
+              </Button>
+            </Col>
+            <Col sm={1} className="ml-4">
+              <Button
+                variant="Primary"
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
+                onClick={(event) => this.changeMonthButton(event, 12)}
+              >
+                December
+              </Button>
+            </Col>
           </Row>
-          <Row className="mt-5 ml-2">
-            {this.props.movie.dataMovie.map((item, index) => {
-              return (
-                <Col md={2} key={index} className="mr-4">
-                  <TickitzImageCard1 data={item} />
-                </Col>
-              );
-            })}
+          <Row className="mt-5 ml-3">
+            {this.handleUpcomingMoviesMap(activeMonth)}
           </Row>
           <Row className="text-center mt-5 mb-5">
             <Col>
