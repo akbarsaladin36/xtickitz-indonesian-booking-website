@@ -7,7 +7,7 @@
     <a href="https://github.com/akbarsaladin36/xtickitz-indonesian-booking-website/pulls">Request Feature</a>
   </p>
 
-![Image Banner](public/img/home.jpg)
+![Image Banner](public/img/home-screenshot.jpg)
 
 ## About The Project
 
