@@ -35,7 +35,7 @@ axiosApiIntances.interceptors.response.use(
     if (error.response.status === 403) {
       alert("Please Login !");
       localStorage.clear();
-      window.location.href = "/main/sign-in";
+      window.location.href = "/auth/sign-in";
     }
     return Promise.reject(error);
   }

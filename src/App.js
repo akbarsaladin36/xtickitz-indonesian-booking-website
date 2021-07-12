@@ -13,6 +13,7 @@ import SignIn from "./pages/main/sign_in/Sign_In";
 import PrivateRoute from "./helpers/PrivateRoute";
 import PublicRoute from "./helpers/PublicRoute";
 import ProfilePage from "./pages/main/profile_page/Profile_Page";
+import LandingPage from "./pages/main/landing_page/Landing_Page";
 
 class App extends Component {
   render() {
@@ -61,6 +62,7 @@ class App extends Component {
                   exact
                   component={SignUp}
                 />
+                <Route path="/" exact component={LandingPage} />
               </Switch>
             </Router>
           </PersistGate>
