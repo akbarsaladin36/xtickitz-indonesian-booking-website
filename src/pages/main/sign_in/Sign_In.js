@@ -52,7 +52,9 @@ class SignIn extends Component {
       });
     } else {
       this.props.login(data).then((res) => {
+        console.log(res);
         localStorage.setItem("token", this.props.auth.data.token);
+        localStorage.setItem("userId", this.props.auth.data.user_account_id);
         this.setState({
           isSuccess: res.action.payload.data.msg,
           isError: false,

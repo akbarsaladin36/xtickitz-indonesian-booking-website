@@ -30,13 +30,8 @@ class TickitzSeat1 extends Component {
   }
 
   render() {
-    const {
-      seatAlphabet,
-      selectedSeat,
-      reservedSeat,
-      bookingSeat,
-    } = this.props;
-    // console.log(this.props);
+    const { seatAlphabet, selectedSeat, reservedSeat, bookingSeat } =
+      this.props;
     return (
       <div>
         <Row className={TickitzSeatStyle.rowSeat}>

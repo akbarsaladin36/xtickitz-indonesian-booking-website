@@ -10,3 +10,7 @@
   color: purple !important;
   background-color: white !important;
 }
+
+.text_cursor {
+  cursor: pointer;
+}

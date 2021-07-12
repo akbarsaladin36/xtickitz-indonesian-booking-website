@@ -6,27 +6,54 @@ import TickitzBigImage from "../../../components/TickitzBigImageCard";
 import TickitzImage2 from "../../../components/TickitzImageCard2";
 import { connect } from "react-redux";
 import { getOneMovie } from "../../../redux/actions/movie";
+import axiosApiIntances from "../../../utils/axios";
 
 class MovieDetailPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: [],
+      movieId: this.props.match.params.id,
+      cinema: {
+        schedule_date: "",
+        premiere_location: "",
+        pagination: {},
+        page: 1,
+        limit: 3,
+      },
+      data_cinema: [],
     };
   }
+
   componentDidMount() {
-    const { id } = this.props.match.params;
-    this.getMovieDataById(id);
+    const { movieId } = this.state;
+    this.getMovieDataById(movieId);
+    this.getCinemaDataByMovieId();
   }
 
   getMovieDataById = (id) => {
     this.props.getOneMovie(id);
   };
 
-  // getCinema
+  getCinemaDataByMovieId = () => {
+    const { movieId } = this.state;
+    let { schedule_date, premiere_location, page, limit } = this.state.cinema;
+    schedule_date = "%" + schedule_date + "%";
+    premiere_location = "%" + premiere_location + "%";
+    axiosApiIntances
+      .get(
+        `cinema/cinema-movie/get?movieId=${movieId}&location=${premiere_location}&date=${schedule_date}&page=${page}&limit=${limit}`
+      )
+      .then((res) => {
+        this.setState({
+          data_cinema: res.data.data,
+        });
+      });
+  };
 
   render() {
     const {
+      movie_id,
       movie_name,
       movie_genre,
       movie_release_date,
@@ -36,6 +63,7 @@ class MovieDetailPage extends Component {
       movie_synopsis,
       movie_image,
     } = this.props.movie.dataMovieDetail;
+    const { data_cinema } = this.state;
     return (
       <div>
         <Container>
@@ -93,18 +121,13 @@ class MovieDetailPage extends Component {
             </Form>
           </Row>
           <Row className="justify-content-center mt-5">
-            <Col>
-              <TickitzImage2 />
-              <TickitzImage2 />
-            </Col>
-            <Col>
-              <TickitzImage2 />
-              <TickitzImage2 />
-            </Col>
-            <Col>
-              <TickitzImage2 />
-              <TickitzImage2 />
-            </Col>
+            {data_cinema.map((item, index) => {
+              return (
+                <Col key={index}>
+                  <TickitzImage2 data={[movie_id, item]} />
+                </Col>
+              );
+            })}
           </Row>
           <p className="text-center">view more</p>
           <TickitzFooter />
