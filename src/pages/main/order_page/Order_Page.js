@@ -234,43 +234,6 @@ class OrderPage extends Component {
                       />
                     );
                   })}
-
-                  {/* <TickitzSeat1
-                    seatAlphabet="B"
-                    reservedSeat={reservedSeat}
-                    selectedSeat={selectedSeat}
-                    bookingSeat={this.bookingSeat.bind(this)}
-                  />
-                  <TickitzSeat1
-                    seatAlphabet="C"
-                    reservedSeat={reservedSeat}
-                    selectedSeat={selectedSeat}
-                    bookingSeat={this.bookingSeat.bind(this)}
-                  />
-                  <TickitzSeat1
-                    seatAlphabet="D"
-                    reservedSeat={reservedSeat}
-                    selectedSeat={selectedSeat}
-                    bookingSeat={this.bookingSeat.bind(this)}
-                  />
-                  <TickitzSeat1
-                    seatAlphabet="E"
-                    reservedSeat={reservedSeat}
-                    selectedSeat={selectedSeat}
-                    bookingSeat={this.bookingSeat.bind(this)}
-                  />
-                  <TickitzSeat1
-                    seatAlphabet="F"
-                    reservedSeat={reservedSeat}
-                    selectedSeat={selectedSeat}
-                    bookingSeat={this.bookingSeat.bind(this)}
-                  />
-                  <TickitzSeat1
-                    seatAlphabet="G"
-                    reservedSeat={reservedSeat}
-                    selectedSeat={selectedSeat}
-                    bookingSeat={this.bookingSeat.bind(this)}
-                  /> */}
                 </Card.Body>
               </Card>
             </Col>

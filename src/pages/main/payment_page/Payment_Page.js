@@ -57,6 +57,7 @@ class PaymentPage extends Component {
     axiosApiIntances
       .post("booking", data)
       .then((res) => {
+        console.log(res);
         localStorage.removeItem("bookingInfo");
         window.setTimeout(() => {
           this.props.history.push("/main/home");
@@ -158,15 +159,6 @@ class PaymentPage extends Component {
                     </Col>
                   );
                 })}
-                {/* <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col>
-                <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col>
-                <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col> */}
               </Row>
               <Row className="ml-2 mt-4 bg-light">
                 {listPaymentMethod2.map((item, index) => {
@@ -179,18 +171,6 @@ class PaymentPage extends Component {
                     </Col>
                   );
                 })}
-                {/* <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col>
-                <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col>
-                <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col>
-                <Col xs={3}>
-                  <TickitzPaymentButton />
-                </Col> */}
               </Row>
             </Col>
           </Row>
