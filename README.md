@@ -1,6 +1,6 @@
 <h1 align='center'>React JS - Tickitz Booking Ticket</h1>
   <p align="center">
-    <a href="link_deploy">View Demo</a>
+    <a href="https://tickitz-indonesian-booking-tickets.netlify.app/auth/sign-in">View Demo</a>
     ·
     <a href="https://github.com/akbarsaladin36/xtickitz-indonesian-booking-website/issues">Report Bug</a>
     ·

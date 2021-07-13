@@ -24,7 +24,7 @@ class App extends Component {
             <Router>
               <Switch>
                 <PrivateRoute path="/main/home" exact component={Home} />
-                <Route
+                <PrivateRoute
                   path="/main/movie-detail-page/:id"
                   exact
                   component={MovieDetailPage}
@@ -57,12 +57,11 @@ class App extends Component {
                 />
                 <PublicRoute
                   restricted={true}
-                  Route
                   path="/auth/sign-up"
                   exact
                   component={SignUp}
                 />
-                <Route path="/" exact component={LandingPage} />
+                <PublicRoute path="/" exact component={LandingPage} />
               </Switch>
             </Router>
           </PersistGate>

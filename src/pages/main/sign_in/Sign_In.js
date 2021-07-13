@@ -29,7 +29,6 @@ class SignIn extends Component {
 
   handleLogin = (event) => {
     event.preventDefault();
-    // console.log(this.state.form);
     const data = {
       userEmail: this.state.form.userEmail,
       userPassword: this.state.form.userPassword,
