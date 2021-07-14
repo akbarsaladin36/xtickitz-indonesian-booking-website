@@ -63,14 +63,14 @@ class TickitzImage2 extends Component {
       <div>
         <Card className="mb-4">
           <Card.Body>
-            <Row className="mt-3">
+            <Row className={`${TickitzCard2Style.cinema_position_1} mt-3`}>
               <Col>
                 <img
                   src="/img/footer-sponsor-image-1.png"
                   alt="premiere cinema"
                 />
               </Col>
-              <Col>
+              <Col className={TickitzCard2Style.cinema_position_2}>
                 <p>{cinema_name}</p>
                 <p>{premiere_location_address}</p>
                 <p>{premiere_location_city}</p>

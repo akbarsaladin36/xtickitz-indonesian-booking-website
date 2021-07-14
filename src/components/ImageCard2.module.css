@@ -14,3 +14,16 @@
 .text_cursor {
   cursor: pointer;
 }
+
+/* Responsive Website */
+
+@media only screen and (max-width: 600px) {
+  .cinema_position_1 {
+    flex-direction: column;
+    text-align: center;
+  }
+
+  .cinema_position_2 {
+    margin-top: 30px;
+  }
+}

@@ -17,6 +17,17 @@
   color: purple;
 }
 
+.upcoming_movie_slider {
+  overflow-x: scroll;
+  flex-direction: row;
+  flex-wrap: nowrap;
+}
+
+.button_month_slider {
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+}
+
 .button_month_1 {
   border-color: purple !important;
   color: purple !important;
@@ -30,6 +41,11 @@
   background-color: purple !important;
 }
 
+.movie_by_month_position {
+  overflow-x: scroll;
+  flex-wrap: nowrap;
+}
+
 .jumbotron_big_text_1 {
   color: purple;
 }
@@ -40,13 +56,38 @@
   background-color: purple !important;
 }
 
+.join_button_1:hover {
+  border-color: purple !important;
+  color: purple !important;
+  background-color: white !important;
+}
+
 /* Responsive Website */
 
 @media only screen and (max-width: 600px) {
+  .header_position {
+    flex-direction: column;
+  }
+
+  .header_image_position {
+    margin-left: 95px !important;
+    margin-top: 40px;
+  }
+
+  .now_showing_position {
+    margin-top: 40px;
+  }
+
   .button_month_slider {
-    overflow: auto;
-    flex-wrap: nowrap;
-    flex: 50%;
     flex-direction: row;
+  }
+
+  .join_button_1 {
+    margin-top: 25px;
+    width: 85%;
+  }
+
+  .join_form_control {
+    width: 85%;
   }
 }

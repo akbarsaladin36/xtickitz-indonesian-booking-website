@@ -241,8 +241,10 @@ class AdminPage extends Component {
                   <TickitzImageCard4 movieImage={movieImage} />
                 </Col>
                 <Col className="ml-5">
-                  <Form>
-                    <Form.Row>
+                  <Form className={AdminPageStyle.form_manage_movie_position_1}>
+                    <Form.Row
+                      className={AdminPageStyle.form_manage_movie_position}
+                    >
                       <Col>
                         <Form.Group>
                           <Form.Label>Movie Name</Form.Label>
@@ -252,6 +254,7 @@ class AdminPage extends Component {
                             placeholder="Write a movie name"
                             onChange={(event) => this.changeText(event)}
                             value={movieName}
+                            className={AdminPageStyle.form_manage_movie_control}
                           />
                         </Form.Group>
                       </Col>
@@ -264,11 +267,14 @@ class AdminPage extends Component {
                             placeholder="Describe a category of movie"
                             onChange={(event) => this.changeText(event)}
                             value={movieGenre}
+                            className={AdminPageStyle.form_manage_movie_control}
                           />
                         </Form.Group>
                       </Col>
                     </Form.Row>
-                    <Form.Row>
+                    <Form.Row
+                      className={AdminPageStyle.form_manage_movie_position}
+                    >
                       <Col>
                         <Form.Group>
                           <Form.Label>Director</Form.Label>
@@ -278,6 +284,7 @@ class AdminPage extends Component {
                             placeholder="Write a director name"
                             onChange={(event) => this.changeText(event)}
                             value={movieDirectedBy}
+                            className={AdminPageStyle.form_manage_movie_control}
                           />
                         </Form.Group>
                       </Col>
@@ -290,11 +297,14 @@ class AdminPage extends Component {
                             placeholder="Describe a category of movie"
                             onChange={(event) => this.changeText(event)}
                             value={movieCasts}
+                            className={AdminPageStyle.form_manage_movie_control}
                           />
                         </Form.Group>
                       </Col>
                     </Form.Row>
-                    <Form.Row>
+                    <Form.Row
+                      className={AdminPageStyle.form_manage_movie_position}
+                    >
                       <Col>
                         <Form.Group>
                           <Form.Label>Release Date</Form.Label>
@@ -304,6 +314,7 @@ class AdminPage extends Component {
                             placeholder="Write a movie name"
                             onChange={(event) => this.changeText(event)}
                             value={movieReleaseDate}
+                            className={AdminPageStyle.form_manage_movie_control}
                           />
                         </Form.Group>
                       </Col>
@@ -318,6 +329,9 @@ class AdminPage extends Component {
                                 placeholder="Hour"
                                 onChange={(event) => this.changeText(event)}
                                 value={movieDurationHour}
+                                className={
+                                  AdminPageStyle.form_manage_movie_control_1
+                                }
                               />
                             </Form.Group>
                           </Col>
@@ -330,6 +344,9 @@ class AdminPage extends Component {
                                 placeholder="Minute"
                                 onChange={(event) => this.changeText(event)}
                                 value={movieDurationMinutes}
+                                className={
+                                  AdminPageStyle.form_manage_movie_control_1
+                                }
                               />
                             </Form.Group>
                           </Col>
@@ -346,6 +363,7 @@ class AdminPage extends Component {
                             placeholder="Your synopsis"
                             onChange={(event) => this.changeText(event)}
                             value={movieSynopsis}
+                            className={AdminPageStyle.form_manage_movie_control}
                           />
                         </Form.Group>
                         <Form.Group>
@@ -357,7 +375,9 @@ class AdminPage extends Component {
                       </Col>
                     </Form.Row>
                     <Form.Row>
-                      <Col className="d-flex justify-content-end">
+                      <Col
+                        className={`${AdminPageStyle.submit_button_position} d-flex justify-content-end`}
+                      >
                         <Button
                           variant="primary"
                           className={`${AdminPageStyle.reset_form_button} mr-3`}
@@ -383,9 +403,9 @@ class AdminPage extends Component {
               </Row>
             </Col>
           </Row>
-          <Row>
+          <Row className={AdminPageStyle.data_movie_position}>
             <Col className="mt-5 ml-5">
-              <h3>Data Movie</h3>
+              <h3 className={AdminPageStyle.data_movie_text}>Data Movie</h3>
             </Col>
             <Col className={`${AdminPageStyle.data_movie_row} mt-5`}>
               <Form.Row className="justify-content-end">
@@ -416,7 +436,7 @@ class AdminPage extends Component {
               </Form.Row>
             </Col>
           </Row>
-          <Row className="ml-3">
+          <Row className={`${AdminPageStyle.card_movie_slider} ml-3`}>
             {this.state.data.map((item, index) => {
               return (
                 <Col md={2} className="ml-4" key={index}>

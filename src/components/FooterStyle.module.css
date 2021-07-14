@@ -9,3 +9,15 @@
   opacity: 50%;
   margin-top: 100%;
 }
+
+/* * Responsive Website * */
+
+@media only screen and (max-width: 600px) {
+  .footer_position {
+    flex-direction: column;
+  }
+
+  .image_sponsor_position {
+    margin-left: 35px;
+  }
+}

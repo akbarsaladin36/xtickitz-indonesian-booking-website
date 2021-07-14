@@ -1,55 +1,54 @@
-.card_size {
-  width: 95%;
-}
-
-.change_movie_button {
+.previous_button {
   border-color: purple !important;
   color: purple !important;
   background-color: white !important;
-  width: 50%;
+  width: 30%;
 }
 
-.change_movie_button:hover {
+.previous_button:hover {
   border-color: purple !important;
   color: white !important;
   background-color: purple !important;
+  width: 30%;
 }
 
 .checkout_button {
   border-color: purple !important;
   color: white !important;
   background-color: purple !important;
-  width: 40%;
+  width: 35%;
 }
 
 .checkout_button:hover {
   border-color: purple !important;
   color: purple !important;
   background-color: white !important;
+  width: 35%;
 }
 
+/* Responsive Website */
+
 @media only screen and (max-width: 600px) {
-  .card_size {
-    width: 100%;
+  .right_column {
+    margin-top: 50px;
+    margin-left: -20px !important;
   }
 
-  .change_movie_button_position {
-    display: none;
+  .payment_method_position {
+    flex-wrap: nowrap;
   }
 
-  .checkout_button {
-    width: 320%;
-    margin-left: 25px;
-    margin-top: 30px;
+  .personal_information_form_control {
+    width: 230%;
   }
 
+  .checkout_button,
   .checkout_button:hover {
-    width: 320%;
-    margin-left: 25px;
-    margin-top: 30px;
+    width: 100%;
+    margin-left: 45px;
   }
 
-  .movie_selected_position {
+  .previous_button_position {
     display: none;
   }
 }

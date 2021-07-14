@@ -189,7 +189,6 @@ class ProfilePage extends Component {
   };
 
   render() {
-    // console.log(this.props);
     const { user_account_first_name, user_account_last_name } =
       this.props.user.dataUser;
     const {
@@ -209,7 +208,9 @@ class ProfilePage extends Component {
           <Row>
             <Col lg={3} className="ml-5 mt-5">
               <p>Info</p>
-              <div className="d-flex justify-content-center">
+              <div
+                className={`${ProfilePageStyle.formUserImage_position} d-flex justify-content-center`}
+              >
                 {this.props.user.dataUser.user_account_image !== "" ? (
                   <img
                     src={`${process.env.REACT_APP_IMAGE_URL}${userImage}`}
@@ -220,7 +221,9 @@ class ProfilePage extends Component {
                   <img src="/img/profile-picture-information.png" alt="" />
                 )}
               </div>
-              <div className="text-center">
+              <div
+                className={`${ProfilePageStyle.profile_information_1_position} text-center`}
+              >
                 <p>
                   {user_account_first_name} {user_account_last_name}
                 </p>
@@ -260,7 +263,7 @@ class ProfilePage extends Component {
               )}
               {isError && <div className="alert alert-danger">{isError}</div>}
               <Form className="ml-3 mt-5">
-                <Row>
+                <Row className={ProfilePageStyle.detail_information_1}>
                   <Col>
                     <Form.Group>
                       <Form.Label>First Name</Form.Label>
@@ -270,6 +273,7 @@ class ProfilePage extends Component {
                         name="userFirstName"
                         value={userFirstName}
                         onChange={(event) => this.changeText(event)}
+                        className={ProfilePageStyle.form_control_size}
                       />
                     </Form.Group>
                   </Col>
@@ -282,11 +286,14 @@ class ProfilePage extends Component {
                         name="userLastName"
                         value={userLastName}
                         onChange={(event) => this.changeText(event)}
+                        className={ProfilePageStyle.form_control_size}
                       />
                     </Form.Group>
                   </Col>
                 </Row>
-                <Row className="mt-4">
+                <Row
+                  className={`${ProfilePageStyle.detail_information_2} mt-4`}
+                >
                   <Col>
                     <Form.Group>
                       <Form.Label>E-mail</Form.Label>
@@ -296,6 +303,7 @@ class ProfilePage extends Component {
                         name="userEmail"
                         value={userEmail}
                         onChange={(event) => this.changeText(event)}
+                        className={ProfilePageStyle.form_control_size}
                       />
                     </Form.Group>
                   </Col>
@@ -308,6 +316,7 @@ class ProfilePage extends Component {
                         name="userPhoneNumber"
                         value={userPhoneNumber}
                         onChange={(event) => this.changeText(event)}
+                        className={ProfilePageStyle.form_control_size}
                       />
                     </Form.Group>
                   </Col>
@@ -322,7 +331,7 @@ class ProfilePage extends Component {
               <p className="mt-5 ml-3">Account and Privacy</p>
               <hr className="mb-2 ml-3" />
               <Form className="ml-3 mt-3">
-                <Row>
+                <Row className={ProfilePageStyle.account_and_privacy_position}>
                   <Col>
                     <Form.Group>
                       <Form.Label>New Password</Form.Label>
@@ -332,6 +341,7 @@ class ProfilePage extends Component {
                         placeholder="New Password"
                         value={userNewPassword}
                         onChange={(event) => this.changeText(event)}
+                        className={ProfilePageStyle.form_control_size}
                       />
                     </Form.Group>
                   </Col>
@@ -344,6 +354,7 @@ class ProfilePage extends Component {
                         placeholder="Confirm Password"
                         value={userConfirmPassword}
                         onChange={(event) => this.changeText(event)}
+                        className={ProfilePageStyle.form_control_size}
                       />
                     </Form.Group>
                   </Col>

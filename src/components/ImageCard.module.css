@@ -29,3 +29,12 @@
   object-fit: cover;
   text-align: center;
 }
+
+/* Responsive Website */
+
+/* @media only screen and (max-width: 780px) {
+  .now_showing_cards_image {
+    width: 350%;
+    margin-left: 100px;
+  }
+} */

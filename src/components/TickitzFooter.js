@@ -2,8 +2,7 @@ import React, { Component } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { Link } from "react-router-dom";
 import { FiFacebook, FiTwitter, FiInstagram, FiYoutube } from "react-icons/fi";
-
-// import TickitzFooterStyle from "./FooterStyle.module.css";
+import TickitzFooterStyle from "./FooterStyle.module.css";
 
 class TickitzFooter extends Component {
   render() {
@@ -11,7 +10,7 @@ class TickitzFooter extends Component {
       <div>
         <Container className="bg-light">
           <footer>
-            <Row className="ml-0 mt-3">
+            <Row className={`${TickitzFooterStyle.footer_position} ml-0 mt-3`}>
               <Col className="mt-3">
                 <img src="/img/home-logo.jpg" alt="tickitz footer logo" />
                 <p className="mt-3 text-muted">
@@ -19,7 +18,7 @@ class TickitzFooter extends Component {
                 </p>
                 <p className="text-muted">conveniently, watch movie quietly.</p>
               </Col>
-              <Col className="ml-4 mt-3">
+              <Col className="mt-3">
                 <h6>Explore</h6>
                 <ul className="list-unstyled text-decoration-none mt-3">
                   <li className="mb-2">
@@ -54,12 +53,12 @@ class TickitzFooter extends Component {
                 <img
                   src="/img/footer-sponsor-image-2.png"
                   alt="footer-sponsor-2"
-                  className="my-3"
+                  className={`${TickitzFooterStyle.image_sponsor_position} my-3`}
                 />
                 <img
                   src="/img/footer-sponsor-image-3.png"
                   alt="footer-sponsor-3"
-                  className="my-3"
+                  className={`${TickitzFooterStyle.image_sponsor_position} my-3`}
                 />
               </Col>
               <Col className="mt-3">

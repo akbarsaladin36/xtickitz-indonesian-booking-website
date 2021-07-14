@@ -96,14 +96,17 @@ class Home extends Component {
       <div>
         <Container>
           <TickitzNavbar />
-          <Row className="mt-5">
+          <Row className={`${TickitzHomeStyle.header_position} mt-5`}>
             <Col lg={5} className="ml-5 mt-5 pt-lg-5">
               <h6 className="text-muted">Nearest Camera, Newest Movie,</h6>
               <h1 className={TickitzHomeStyle.header_big_text_1}>
                 Find Out Now!
               </h1>
             </Col>
-            <Col lg={5} className="ml-5 pb-lg-5 pl-lg-5 justify-content-center">
+            <Col
+              lg={5}
+              className={`${TickitzHomeStyle.header_image_position} ml-5 pb-lg-5 pl-lg-5 justify-content-center`}
+            >
               <img
                 src="/img/header-image-1.jpg"
                 alt="header movie 1"
@@ -121,7 +124,7 @@ class Home extends Component {
               />
             </Col>
           </Row>
-          <Row>
+          <Row className={TickitzHomeStyle.now_showing_position}>
             <Col className={TickitzHomeStyle.now_showing_text_1}>
               <h6 className="ml-4">Now Showing</h6>
             </Col>
@@ -131,7 +134,9 @@ class Home extends Component {
               </Link>
             </Col>
           </Row>
-          <Row className="mt-4 ml-5">
+          <Row
+            className={`${TickitzHomeStyle.upcoming_movie_slider} mt-4 ml-5`}
+          >
             {this.state.dataNowShowing.length <= 0
               ? null
               : this.state.dataNowShowing.map((item, index) => {
@@ -155,7 +160,7 @@ class Home extends Component {
             </Col>
           </Row>
           <Row className={`${TickitzHomeStyle.button_month_slider} mt-3`}>
-            <Col xs={1} className="ml-4">
+            <Col sm={1} className="ml-4">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1}`}
@@ -164,16 +169,16 @@ class Home extends Component {
                 January
               </Button>
             </Col>
-            <Col xs={1} className="ml-2">
+            <Col sm={1} className="ml-4">
               <Button
                 variant="Primary"
-                className={`${TickitzHomeStyle.button_month_1} ml-3`}
+                className={`${TickitzHomeStyle.button_month_1} ml-4`}
                 onClick={(event) => this.changeMonthButton(event, 2)}
               >
                 February
               </Button>
             </Col>
-            <Col xs={1} className="ml-3">
+            <Col sm={1} className="ml-4">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1} ml-4`}
@@ -182,7 +187,7 @@ class Home extends Component {
                 March
               </Button>
             </Col>
-            <Col xs={1} className="ml-4">
+            <Col sm={1} className="ml-4">
               <Button
                 variant="Primary"
                 className={`${TickitzHomeStyle.button_month_1} ml-4`}
@@ -264,7 +269,9 @@ class Home extends Component {
               </Button>
             </Col>
           </Row>
-          <Row className="mt-5 ml-3">
+          <Row
+            className={`${TickitzHomeStyle.movie_by_month_position} mt-5 ml-3`}
+          >
             {this.handleUpcomingMoviesMap(activeMonth)}
           </Row>
           <Row className="text-center mt-5 mb-5">
@@ -279,7 +286,7 @@ class Home extends Component {
                 </Form.Label>
                 <Form.Control
                   type="email"
-                  className="mb-2 mr-sm-2"
+                  className={`${TickitzHomeStyle.join_form_control} mb-2 mr-sm-2`}
                   id="inlineFormInputName2"
                   placeholder="Write your email"
                 />

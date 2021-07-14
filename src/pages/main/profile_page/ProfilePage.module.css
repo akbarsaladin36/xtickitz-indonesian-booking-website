@@ -69,3 +69,40 @@
   width: 200px;
   height: 200px;
 }
+
+/* Responsive Website */
+
+@media only screen and (max-width: 600px) {
+  .formUserImage_position {
+    margin-left: -50px;
+  }
+
+  .formUserImage {
+    margin-left: 135px;
+  }
+
+  .profile_information_1_position {
+    margin-left: -50px;
+  }
+
+  .detail_information_1 {
+    flex-direction: column;
+  }
+
+  .detail_information_2 {
+    flex-direction: column;
+    margin-top: 10px !important;
+  }
+
+  .account_and_privacy_position {
+    flex-direction: column;
+  }
+
+  .form_control_size {
+    width: 95%;
+  }
+
+  .profile_update_button {
+    width: 95%;
+  }
+}

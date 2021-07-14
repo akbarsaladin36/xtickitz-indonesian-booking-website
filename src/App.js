@@ -50,18 +50,25 @@ class App extends Component {
                   component={ProfilePage}
                 />
                 <PublicRoute
+                  Route
                   restricted={true}
                   path="/auth/sign-in"
                   exact
                   component={SignIn}
                 />
                 <PublicRoute
+                  Route
                   restricted={true}
                   path="/auth/sign-up"
                   exact
                   component={SignUp}
                 />
-                <PublicRoute path="/" exact component={LandingPage} />
+                <PublicRoute
+                  restricted={false}
+                  path="/"
+                  exact
+                  component={LandingPage}
+                />
               </Switch>
             </Router>
           </PersistGate>

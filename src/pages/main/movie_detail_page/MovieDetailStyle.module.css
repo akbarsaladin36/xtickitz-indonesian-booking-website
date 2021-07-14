@@ -1,0 +1,15 @@
+/* Responsive Website */
+
+@media only screen and (max-width: 600px) {
+  .showtime_tickets_position_1 {
+    flex-direction: column;
+  }
+
+  .movie_name_position_1 {
+    text-align: center;
+  }
+
+  .movie_name_position_2 {
+    text-align: center;
+  }
+}

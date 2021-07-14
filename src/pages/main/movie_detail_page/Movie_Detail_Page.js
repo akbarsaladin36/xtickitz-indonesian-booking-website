@@ -7,6 +7,7 @@ import TickitzImage2 from "../../../components/TickitzImageCard2";
 import { connect } from "react-redux";
 import { getOneMovie } from "../../../redux/actions/movie";
 import axiosApiIntances from "../../../utils/axios";
+import TickitzMovieDetailStyle from "./MovieDetailStyle.module.css";
 
 class MovieDetailPage extends Component {
   constructor(props) {
@@ -73,8 +74,14 @@ class MovieDetailPage extends Component {
               <TickitzBigImage movieImage={movie_image} />
             </Col>
             <Col className="ml-4">
-              <h4>{movie_name}</h4>
-              <p className="text-muted">{movie_genre}</p>
+              <h4 className={TickitzMovieDetailStyle.movie_name_position_1}>
+                {movie_name}
+              </h4>
+              <p
+                className={`${TickitzMovieDetailStyle.movie_name_position_2} text-muted`}
+              >
+                {movie_genre}
+              </p>
               <Row>
                 <Col>
                   <p className="text-muted">Release Date</p>
@@ -120,7 +127,9 @@ class MovieDetailPage extends Component {
               </Form.Row>
             </Form>
           </Row>
-          <Row className="justify-content-center mt-5">
+          <Row
+            className={`${TickitzMovieDetailStyle.showtime_tickets_position_1} justify-content-center mt-5`}
+          >
             {data_cinema.map((item, index) => {
               return (
                 <Col key={index}>

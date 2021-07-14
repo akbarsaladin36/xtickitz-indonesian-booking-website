@@ -167,9 +167,13 @@ class OrderPage extends Component {
         <Container>
           <TickitzNavbar />
           <Row>
-            <Col sm={6} className="mt-5 ml-4">
-              <h5>Movie selected</h5>
-              <Row className=" bg-light">
+            <Col sm={7} className="mt-5 ml-4">
+              <h5 className={OrderPageStyle.movie_selected_position}>
+                Movie selected
+              </h5>
+              <Row
+                className={`${OrderPageStyle.movie_selected_position} bg-light`}
+              >
                 <Col>
                   <p>{movieName}</p>
                 </Col>
@@ -177,8 +181,28 @@ class OrderPage extends Component {
                   <Link to="#">Change movie</Link>
                 </Col>
               </Row>
+              <Row>
+                <Col sm={11} className="ml-0 mt-3 bg-light">
+                  <h5>Choose Your Seat</h5>
+                  <Card className={OrderPageStyle.card_size}>
+                    <Card.Body>
+                      {setSeatAlphabet.map((item, index) => {
+                        return (
+                          <TickitzSeat1
+                            key={index}
+                            seatAlphabet={item}
+                            reservedSeat={reservedSeat}
+                            selectedSeat={selectedSeat}
+                            bookingSeat={this.bookingSeat.bind(this)}
+                          />
+                        );
+                      })}
+                    </Card.Body>
+                  </Card>
+                </Col>
+              </Row>
             </Col>
-            <Col sm={5} className="mt-5 ml-3">
+            <Col sm={4} className="mt-5 ml-3">
               <h5>Order Info</h5>
               <Col className="bg-light">
                 <h4 className="text-center">{cinemaName}</h4>
@@ -189,7 +213,7 @@ class OrderPage extends Component {
                     <p>One ticket price</p>
                     <p>Seat choosed</p>
                   </Col>
-                  <Col>
+                  <Col className="text-right">
                     <p>{movieName}</p>
                     <p>{scheduleClock}</p>
                     <p>{cinemaPrice}</p>
@@ -205,7 +229,7 @@ class OrderPage extends Component {
                 </Row>
                 <Row>
                   <Col>
-                    <h4>Total Payment</h4>
+                    <h5>Total Payment</h5>
                   </Col>
                   <Col className="text-right">
                     <h4>{selectedSeat.length * cinemaPrice}</h4>
@@ -214,32 +238,11 @@ class OrderPage extends Component {
               </Col>
             </Col>
           </Row>
-          <Row className="mt-1 ml-1">
-            <Col>
-              <h5>Choose Your Seat</h5>
-            </Col>
-          </Row>
-          <Row className="mb-3">
-            <Col md={5} className="ml-5 bg-light">
-              <Card>
-                <Card.Body>
-                  {setSeatAlphabet.map((item, index) => {
-                    return (
-                      <TickitzSeat1
-                        key={index}
-                        seatAlphabet={item}
-                        reservedSeat={reservedSeat}
-                        selectedSeat={selectedSeat}
-                        bookingSeat={this.bookingSeat.bind(this)}
-                      />
-                    );
-                  })}
-                </Card.Body>
-              </Card>
-            </Col>
-          </Row>
-          <Row>
-            <Col xs={4} className="ml-4">
+          <Row className="mt-3">
+            <Col
+              xs={4}
+              className={`${OrderPageStyle.change_movie_button_position} ml-4`}
+            >
               <Button
                 variant="primary"
                 className={OrderPageStyle.change_movie_button}
@@ -250,7 +253,7 @@ class OrderPage extends Component {
             <Col xs={4}>
               <Button
                 variant="primary"
-                className={`${OrderPageStyle.checkout_button} mr-5`}
+                className={`${OrderPageStyle.checkout_button} ml-4 mr-5`}
                 onClick={() => this.handleCheckOut()}
               >
                 Checkout Now

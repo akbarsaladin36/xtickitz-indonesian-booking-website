@@ -36,6 +36,11 @@
   background-color: white !important;
 }
 
+.card_movie_slider {
+  flex-wrap: nowrap;
+  overflow-x: scroll;
+}
+
 .pagination {
   margin: 15px auto;
   display: flex;
@@ -78,7 +83,48 @@
 /* Responsive Website */
 
 @media only screen and (max-width: 780px) {
+  .form_manage_movie_position_1 {
+    margin-top: 300px;
+    margin-left: -100px;
+  }
+
+  .form_manage_movie_position {
+    flex-direction: column;
+  }
+
+  .form_manage_movie_control {
+    width: 95%;
+  }
+
+  .form_manage_movie_control_1 {
+    width: 90%;
+  }
+
+  .submit_button_position {
+    justify-content: start !important;
+    margin-top: 10px;
+  }
+
+  .submit_form_button,
+  .submit_form_button:hover {
+    width: 40% !important;
+  }
+
+  .reset_form_button,
+  .reset_form_button:hover {
+    width: 40% !important;
+  }
+
   .data_movie_row {
-    margin-top: 100px !important;
+    margin-top: 20px !important;
+    margin-left: -200px;
+  }
+
+  .data_movie_text {
+    margin-left: 5px;
+  }
+
+  .data_movie_position {
+    flex-direction: column;
   }
 }
