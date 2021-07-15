@@ -4,7 +4,7 @@
 
 .image_background {
   width: 100%;
-  opacity: 50%;
+  opacity: 50% !important;
 }
 
 .tickitz_white_big_brand {

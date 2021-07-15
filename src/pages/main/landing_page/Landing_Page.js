@@ -95,7 +95,7 @@ class LandingPage extends Component {
     return (
       <div>
         <Container>
-          <TickitzNavbar />
+          <TickitzNavbar isLogin={false} />
           <Row className="mt-5">
             <Col lg={5} className="ml-5 mt-5 pt-lg-5">
               <h6 className="text-muted">Nearest Camera, Newest Movie,</h6>
