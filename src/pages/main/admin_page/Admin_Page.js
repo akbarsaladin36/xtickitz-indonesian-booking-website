@@ -10,7 +10,7 @@ import {
   Dropdown,
   DropdownButton,
 } from "react-bootstrap";
-import TickitzImageCard4 from "../../../components/TickitzImageCard4";
+import TickitzImageCard5 from "../../../components/TickitzImageCard5";
 import AdminPageStyle from "./AdminPageStyle.module.css";
 import TickitzImageCard3 from "../../../components/TickitzImageCard3";
 import { connect } from "react-redux";
@@ -49,7 +49,7 @@ class AdminPage extends Component {
       searchResult: "",
       sort: "",
       page: 1,
-      limit: 5,
+      limit: 6,
       pagination: {},
     };
   }
@@ -238,7 +238,7 @@ class AdminPage extends Component {
               <h3 className="ml-2">Form Movie</h3>
               <Row>
                 <Col xs={2}>
-                  <TickitzImageCard4 movieImage={movieImage} />
+                  <TickitzImageCard5 movieImage={movieImage} />
                 </Col>
                 <Col className="ml-5">
                   <Form className={AdminPageStyle.form_manage_movie_position_1}>
