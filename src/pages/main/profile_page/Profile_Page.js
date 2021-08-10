@@ -181,6 +181,7 @@ class ProfilePage extends Component {
           ...this.state.form,
           userImage: res.action.payload.data.data.user_account_image,
         });
+        this.getDataUserById(id);
         this.props.history.push(`/main/profile-page/${id}`);
       })
       .catch((err) => {

@@ -38,6 +38,20 @@ REACT_APP_IMAGE_URL = [YOUR BACKEND IMAGE API]
 
 5. Type `npm start`
 
+## Feature
+
+A. Admin
+
+1. Login
+2. Update Profile Data and Profile Image
+3. Update and Delete Movie Data
+
+B. User
+
+1. Login and Register
+2. Update Profile Data and Profile Image
+3. Select Movie and Buy Tickets for Movie
+
 ## Acknowledgements
 
 - [Axios](https://www.npmjs.com/package/axios)

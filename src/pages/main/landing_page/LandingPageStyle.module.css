@@ -40,6 +40,15 @@
   background-color: purple !important;
 }
 
+.tickitz_brand_1_size {
+  width: 650px;
+}
+
+.tickitz_brand_1_text {
+  text-align: justify;
+  line-height: 50px;
+}
+
 /* Responsive Website */
 
 @media only screen and (max-width: 600px) {

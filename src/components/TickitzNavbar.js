@@ -2,15 +2,7 @@ import React, { Component } from "react";
 import TickitzNavbarStyle from "./NavbarStyle.module.css";
 import { connect } from "react-redux";
 import { logout } from "../redux/actions/auth";
-import {
-  Container,
-  Navbar,
-  Nav,
-  NavDropdown,
-  // Form,
-  // FormControl,
-  Button,
-} from "react-bootstrap";
+import { Container, Navbar, Nav, Button } from "react-bootstrap";
 
 class TickitzNavbar extends Component {
   componentDidMount() {
@@ -22,6 +14,10 @@ class TickitzNavbar extends Component {
       localStorage.clear();
       window.location.href = "/auth/sign-in";
     }
+  };
+
+  handleSignIn = () => {
+    this.props.history.push("/auth/sign-in");
   };
 
   render() {
@@ -68,31 +64,16 @@ class TickitzNavbar extends Component {
                   <Nav.Link href="#" className="mx-3">
                     Manage Schedule
                   </Nav.Link>
+                  <Nav.Link
+                    href={`/main/profile-page/${this.props.auth.data.user_account_id}`}
+                    className="mx-3"
+                  >
+                    Profile
+                  </Nav.Link>
                 </Nav>
               )}
 
               <Nav className="ml-auto">
-                <NavDropdown
-                  title="Location"
-                  id="basic-nav-dropdown"
-                  className="mx-3"
-                >
-                  <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.2">
-                    Another action
-                  </NavDropdown.Item>
-                  <NavDropdown.Item href="#action/3.3">
-                    Something
-                  </NavDropdown.Item>
-                </NavDropdown>
-                {/* <Form inline>
-              <FormControl
-                type="text"
-                placeholder="Search"
-                className="mr-sm-2"
-              />
-              <Button variant="outline-success">Search</Button>
-            </Form> */}
                 {(isLogin === true &&
                   this.props.auth.data.user_account_status === "user") ||
                 this.props.auth.data.user_account_status === "admin" ? (
@@ -103,7 +84,10 @@ class TickitzNavbar extends Component {
                     Logout
                   </Button>
                 ) : (
-                  <Button className={TickitzNavbarStyle.sign_in_button}>
+                  <Button
+                    onClick={() => this.handleSignIn()}
+                    className={TickitzNavbarStyle.sign_in_button}
+                  >
                     Sign In
                   </Button>
                 )}
